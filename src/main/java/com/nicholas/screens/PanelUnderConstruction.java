@@ -8,10 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class UnderConstruction extends JPanel {
+public class PanelUnderConstruction extends JPanel {
 	
 
-	public UnderConstruction() {
+	public PanelUnderConstruction() {
 
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
@@ -28,7 +28,7 @@ public class UnderConstruction extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				JFrame jf = JFrameFactore.getFrame();
 				jf.getContentPane().removeAll();
-				jf.getContentPane().add(MainScreen.getInstance());
+				jf.getContentPane().add(PanelMainScreen.getInstance());
 				jf.revalidate();
 				jf.repaint();
 			}

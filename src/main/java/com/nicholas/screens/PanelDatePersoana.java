@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class DatePersoanaPanel extends JPanel {
+public class PanelDatePersoana extends JPanel {
 
 
 	public static JTextField tfNrLucrare, tfDataLucrare, tfNumeSolicitant, tfPrenumeSolicitant, tfCNPSolicitant, tfDomiciliuSolicitant, tfResedintaSolicintant, 
@@ -14,10 +14,10 @@ public class DatePersoanaPanel extends JPanel {
 	public static JLabel lblNumarLucrare, lblDataLucrare, lblNume, lblPrenume, lblCNP, lblAdresaDomiciliu, lblAdresaResedinta, lblTelefon, lblSerieCi, lblNumarCi, lblUnitate,
 	lblSubunitate, lblUnitate_1, lblSubunitate_1, lblLucratorSaesp, sexSolicitant;
 
-	public static JComboBox sexSolicitantComboBox;
+	public static JComboBox sexSolicitantComboBox; public static JCheckBox chckbxDomAltJud, chckbxResAltJud;
 
 
-	public DatePersoanaPanel() {
+	public PanelDatePersoana() {
 		setLayout(null);		
 		setBounds(0, 0, 1200, 484);
 		
@@ -60,14 +60,14 @@ public class DatePersoanaPanel extends JPanel {
 
 		tfDomiciliuSolicitant = new JTextField(); tfDomiciliuSolicitant.setHorizontalAlignment(SwingConstants.CENTER);
 		tfDomiciliuSolicitant.setFont(new Font("Times New Roman", Font.BOLD, 24)); tfDomiciliuSolicitant.setColumns(10);
-		tfDomiciliuSolicitant.setBounds(206, 152, 955, 36); add(tfDomiciliuSolicitant);
+		tfDomiciliuSolicitant.setBounds(206, 152, 834, 36); add(tfDomiciliuSolicitant);
 
 		lblAdresaResedinta = new JLabel("Adresa resedinta:"); lblAdresaResedinta.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblAdresaResedinta.setBounds(10, 246, 209, 36); add(lblAdresaResedinta);
 
 		tfResedintaSolicintant = new JTextField(); tfResedintaSolicintant.setHorizontalAlignment(SwingConstants.CENTER);
 		tfResedintaSolicintant.setFont(new Font("Times New Roman", Font.BOLD, 24)); tfResedintaSolicintant.setColumns(10);
-		tfResedintaSolicintant.setBounds(206, 246, 955, 36); add(tfResedintaSolicintant);
+		tfResedintaSolicintant.setBounds(206, 246, 834, 36); add(tfResedintaSolicintant);
 
 		lblTelefon = new JLabel("Telefon :"); lblTelefon.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		lblTelefon.setBounds(10, 340, 218, 36); add(lblTelefon);
@@ -123,24 +123,37 @@ public class DatePersoanaPanel extends JPanel {
  
 		tfLucratorSAESP = new JTextField(); tfLucratorSAESP.setHorizontalAlignment(SwingConstants.CENTER); tfLucratorSAESP.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		tfLucratorSAESP.setColumns(10); tfLucratorSAESP.setBounds(206, 434, 955, 36); add(tfLucratorSAESP);
- 
- JLabel lblSex = new JLabel("Sex :");
- lblSex.setFont(new Font("Times New Roman", Font.BOLD, 24));
- lblSex.setBounds(988, 105, 62, 36);
- add(lblSex);
- 
- String[] MF = {"M", "F"}; sexSolicitant = new JLabel("M");
- sexSolicitantComboBox = new JComboBox(MF);
- sexSolicitantComboBox.addItemListener(new ItemListener() {
- 	public void itemStateChanged(ItemEvent e) {
- 		if (e.getSource() == sexSolicitantComboBox) {
- 			sexSolicitant.setText(sexSolicitantComboBox.getSelectedItem().toString());
-        }
- 	}
- });
- sexSolicitantComboBox.setFont(new Font("Times New Roman", Font.BOLD, 24));
- sexSolicitantComboBox.setBounds(1060, 105, 101, 33);
- add(sexSolicitantComboBox);
-		
+
+		chckbxDomAltJud = new JCheckBox("Alt jud.");
+		chckbxDomAltJud.setHorizontalAlignment(SwingConstants.CENTER);
+		chckbxDomAltJud.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		chckbxDomAltJud.setBounds(1046, 152, 115, 36);
+		add(chckbxDomAltJud);
+
+		chckbxResAltJud = new JCheckBox("Alt jud.");
+		chckbxResAltJud.setHorizontalAlignment(SwingConstants.CENTER);
+		chckbxResAltJud.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		chckbxResAltJud.setBounds(1046, 246, 115, 36);
+		add(chckbxResAltJud);
+
+		JLabel lblSex = new JLabel("Sex :");
+		lblSex.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		lblSex.setBounds(988, 105, 62, 36);
+		add(lblSex);
+
+		String[] MF = {"M", "F"};
+		sexSolicitant = new JLabel("M");
+		sexSolicitantComboBox = new JComboBox(MF);
+		sexSolicitantComboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				if (e.getSource() == sexSolicitantComboBox) {
+					sexSolicitant.setText(sexSolicitantComboBox.getSelectedItem().toString());
+				}
+			}
+		});
+		sexSolicitantComboBox.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		sexSolicitantComboBox.setBounds(1060, 105, 101, 33);
+		add(sexSolicitantComboBox);
+
 	}
 }

@@ -8,21 +8,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainScreen extends JPanel {
+public class PanelMainScreen extends JPanel {
 	
 	public static String tipLucrare;
 
-	private static final MainScreen ms = null;
+	private static final PanelMainScreen ms = null;
 
-	public static MainScreen getInstance() {
+	public static PanelMainScreen getInstance() {
 		if (ms == null) {
-			return new MainScreen();
+			return new PanelMainScreen();
 		} else {
 			return ms;
 		}
 	}
 
-	public MainScreen() {
+	public PanelMainScreen() {
 
 		JFrame frame = JFrameFactore.getFrame();
 
@@ -58,7 +58,7 @@ public class MainScreen extends JPanel {
 		button_prima_arma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
-				frame.getContentPane().add(new LucarePFPrimaArma());
+				frame.getContentPane().add(new PanelLucarePFPrimaArma());
 				tipLucrare = "PA";
 			}
 		});
@@ -76,7 +76,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "ADA";
-				frame.getContentPane().add(new LucrarePFADouaArma());
+				frame.getContentPane().add(new PanelLucrarePFADouaArma());
 			}
 		});
 		button_a_doua_arma.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -91,7 +91,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "V";
-				frame.getContentPane().add(new LucrarePFViza());
+				frame.getContentPane().add(new PanelLucrarePFViza());
 			}
 		});
 		button_viza.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -106,7 +106,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "D";
-				frame.getContentPane().add(new LucrarePFDomiciliu());
+				frame.getContentPane().add(new PanelLucrarePFDomiciliu());
 			}
 		});
 		button_domiciliu.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -121,7 +121,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "R";
-				frame.getContentPane().add(new LucrarePFResedinta());
+				frame.getContentPane().add(new PanelLucrarePFResedinta());
 			}
 		});
 		button_resedinta.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -136,7 +136,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "A";
-				frame.getContentPane().add(new UnderConstruction());
+				frame.getContentPane().add(new PanelUnderConstruction());
 			}
 		});
 		button_autorizatie.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -163,7 +163,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "DOT";
-				frame.getContentPane().add(new LucrarePJ());
+				frame.getContentPane().add(new PanelLucrarePJ());
 			}
 		});
 		button_dotare.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -177,8 +177,8 @@ public class MainScreen extends JPanel {
 		button_gestionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
-				tipLucrare = "G";
-				frame.getContentPane().add(new LucrarePJ());
+				tipLucrare = "GES";
+				frame.getContentPane().add(new PanelLucrarePJ());
 			}
 		});
 		button_gestionar.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -193,7 +193,7 @@ public class MainScreen extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				tipLucrare = "APJ";
-				frame.getContentPane().add(new UnderConstruction());
+				frame.getContentPane().add(new PanelUnderConstruction());
 			}
 		});
 		button_autorizatie2.setFont(new Font("Times New Roman", Font.BOLD, 24));

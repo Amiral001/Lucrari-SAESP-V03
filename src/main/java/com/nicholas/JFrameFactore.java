@@ -1,7 +1,6 @@
 package com.nicholas;
 
-import com.nicholas.screens.MainScreen;
-import com.nicholas.utils.StringsValue;
+import com.nicholas.screens.PanelMainScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,7 +42,7 @@ public class JFrameFactore extends JPanel {
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 
-		frame.getContentPane().add(new MainScreen());
+		frame.getContentPane().add(new PanelMainScreen());
 
 	}
 }

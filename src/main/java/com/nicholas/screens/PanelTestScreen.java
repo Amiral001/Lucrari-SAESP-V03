@@ -2,12 +2,12 @@ package com.nicholas.screens;
 
 import javax.swing.*;
 
-public class TestScreen extends JPanel {
+public class PanelTestScreen extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	public TestScreen() {
+	public PanelTestScreen() {
 
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);

@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class LucrarePersoanaFizica extends Lucrare {
 
-    private String tipLucrare, letalaNeletala, lungaScurta, destinatieArma, regimCerere, domiciliulAltJudet,
+    private String  letalaNeletala, lungaScurta, destinatieArma, regimCerere, domiciliulAltJudet,
             resedintaAltJudet, armaLaDomiciliu, lucratorSAESP;
 
     private PersoanaFizica persoanaFizica;
@@ -12,9 +12,8 @@ public class LucrarePersoanaFizica extends Lucrare {
     public LucrarePersoanaFizica() {
     }
 
-    public LucrarePersoanaFizica(String nrLucrare, LocalDate dataLucrare, String tipLucrare, String letalaNeletala, String lungaScurta, String destinatieArma, String regimCerere, String domiciliulAltJudet, String resedintaAltJudet, String armaLaDomiciliu, String lucratorSAESP, PersoanaFizica persoanaFizica) {
-        super(nrLucrare, dataLucrare);
-        this.tipLucrare = tipLucrare;
+    public LucrarePersoanaFizica(String nrLucrare, String tipLucrare, LocalDate dataLucrare, String letalaNeletala, String lungaScurta, String destinatieArma, String regimCerere, String domiciliulAltJudet, String resedintaAltJudet, String armaLaDomiciliu, String lucratorSAESP, PersoanaFizica persoanaFizica) {
+        super(nrLucrare, tipLucrare, dataLucrare);
         this.letalaNeletala = letalaNeletala;
         this.lungaScurta = lungaScurta;
         this.destinatieArma = destinatieArma;
@@ -33,15 +32,6 @@ public class LucrarePersoanaFizica extends Lucrare {
 
     public void setPersoanaFizica(PersoanaFizica persoanaFizica) {
         this.persoanaFizica = persoanaFizica;
-    }
-
-
-    public String getTipLucrare() {
-        return tipLucrare;
-    }
-
-    public void setTipLucrare(String tipLucrare) {
-        this.tipLucrare = tipLucrare;
     }
 
     public String getLetalaNeletala() {
@@ -111,8 +101,7 @@ public class LucrarePersoanaFizica extends Lucrare {
     @Override
     public String toString() {
         return "LucrarePersoanaFizica{" +
-                "tipLucrare='" + tipLucrare + '\'' +
-                ", letalaNeletala='" + letalaNeletala + '\'' +
+                "letalaNeletala='" + letalaNeletala + '\'' +
                 ", lungaScurta='" + lungaScurta + '\'' +
                 ", destinatieArma='" + destinatieArma + '\'' +
                 ", regimCerere='" + regimCerere + '\'' +

@@ -3,6 +3,7 @@ package com.nicholas.data;
 import com.nicholas.entitys.Lucrare;
 import com.nicholas.entitys.LucrarePersoanaFizica;
 import com.nicholas.entitys.PersoanaFizica;
+import com.nicholas.entitys.PersoanaJuridica;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.Iterator;
 public class DataBase {
 
 	private static final ArrayList<PersoanaFizica> persoaneFizice = new ArrayList<>();
-	private static final ArrayList<LucrarePersoanaFizica> lucrariPF = new ArrayList<>();
+	private static final ArrayList<PersoanaJuridica> persoaneJuridice = new ArrayList<>();
 	private static final ArrayList<Lucrare> lucrari = new ArrayList<>();
 
 
@@ -65,4 +66,14 @@ public class DataBase {
 			System.out.println(lucrare.toString());
 		}
 	}
+
+    public static void addPersoanaJuridica(PersoanaJuridica pj) {
+		Iterator<PersoanaJuridica> iterator = persoaneJuridice.iterator();
+		while (iterator.hasNext()) {
+			if (iterator.next().getDenumire().equals(pj.getDenumire())) {
+				iterator.remove();
+			}
+		}
+		persoaneJuridice.add(pj);
+    }
 }

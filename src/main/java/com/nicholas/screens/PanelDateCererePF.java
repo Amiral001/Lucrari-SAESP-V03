@@ -18,9 +18,9 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class DateCererePF extends JPanel {
+public class PanelDateCererePF extends JPanel {
 
-    public  static PersoanaFizica pf; public static Lucrare lucrare; public static LucrarePersoanaFizica lpf;
+    public  static PersoanaFizica pf; public static LucrarePersoanaFizica lpf;
 
     public static JLabel lblLetalaNeletala, lblLungaScurta, lblDestinaieArm, lblNumarCi_1_1, lblDomiciliuInAlt, lblNumarCi_1_1_1, lblNumarCi_1_1_1_1, labelLetala,
             labelLunga, labelDestinatie, labelCerere, labelDomiciliuAltJudet, labelResedintaAltJudet, labelArmaLaDomiciliu;
@@ -32,7 +32,7 @@ public class DateCererePF extends JPanel {
     public static String motivSuspendareLucrare; public static JButton btnBack;
 
 
-    public DateCererePF() {
+    public PanelDateCererePF() {
         setBounds(0, 0, 1200, 310);
 
         btnBack = new JButton("Back");
@@ -42,7 +42,7 @@ public class DateCererePF extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 JFrame jf = JFrameFactore.getFrame();
                 jf.getContentPane().removeAll();
-                jf.getContentPane().add(MainScreen.getInstance());
+                jf.getContentPane().add(PanelMainScreen.getInstance());
                 jf.revalidate();
                 jf.repaint();
             }
@@ -194,28 +194,28 @@ public class DateCererePF extends JPanel {
                 pf = new PersoanaFizica();
                 lpf = new LucrarePersoanaFizica();
 
-                if (!(DatePersoanaPanel.tfNrLucrare.getText().equals("") || DatePersoanaPanel.tfDataLucrare.getText().equals("") ||
-                        DatePersoanaPanel.tfNumeSolicitant.getText().equals("") || DatePersoanaPanel.tfPrenumeSolicitant.getText().equals("")
-                        || DatePersoanaPanel.tfCNPSolicitant.getText().equals(""))) {
+                if (!(PanelDatePersoana.tfNrLucrare.getText().equals("") || PanelDatePersoana.tfDataLucrare.getText().equals("") ||
+                        PanelDatePersoana.tfNumeSolicitant.getText().equals("") || PanelDatePersoana.tfPrenumeSolicitant.getText().equals("")
+                        || PanelDatePersoana.tfCNPSolicitant.getText().equals(""))) {
 
-                    pf.setNume(DatePersoanaPanel.tfNumeSolicitant.getText()); pf.setPrenume(DatePersoanaPanel.tfPrenumeSolicitant.getText());
-                    pf.setCnp(DatePersoanaPanel.tfCNPSolicitant.getText()); pf.setAdresaDomiciliu(DatePersoanaPanel.tfDomiciliuSolicitant.getText());
-                    pf.setUnitate01(DatePersoanaPanel.tfUnitateDomiciliu.getText()); pf.setSubunitate01(DatePersoanaPanel.tfSubunitateDomiciliu.getText());
-                    pf.setAdresaResedinta(DatePersoanaPanel.tfResedintaSolicintant.getText()); pf.setUnitate02(DatePersoanaPanel.tfUnitateResedinta.getText());
-                    pf.setSubunitate02(DatePersoanaPanel.tfSubunitateresedinta.getText()); pf.setNumarTelefon(DatePersoanaPanel.tfTelefonSolicitant.getText());
-                    pf.setSerieCI(DatePersoanaPanel.tfSerieCI.getText()); pf.setNrCI(DatePersoanaPanel.tfNrCI.getText());
+                    pf.setNume(PanelDatePersoana.tfNumeSolicitant.getText()); pf.setPrenume(PanelDatePersoana.tfPrenumeSolicitant.getText());
+                    pf.setCnp(PanelDatePersoana.tfCNPSolicitant.getText()); pf.setAdresaDomiciliu(PanelDatePersoana.tfDomiciliuSolicitant.getText());
+                    pf.setUnitate01(PanelDatePersoana.tfUnitateDomiciliu.getText()); pf.setSubunitate01(PanelDatePersoana.tfSubunitateDomiciliu.getText());
+                    pf.setAdresaResedinta(PanelDatePersoana.tfResedintaSolicintant.getText()); pf.setUnitate02(PanelDatePersoana.tfUnitateResedinta.getText());
+                    pf.setSubunitate02(PanelDatePersoana.tfSubunitateresedinta.getText()); pf.setNumarTelefon(PanelDatePersoana.tfTelefonSolicitant.getText());
+                    pf.setSerieCI(PanelDatePersoana.tfSerieCI.getText()); pf.setNrCI(PanelDatePersoana.tfNrCI.getText());
 
-                    lpf.setTipLucrare(MainScreen.tipLucrare); lpf.setLetalaNeletala(labelLetala.getText());
+                    lpf.setTipLucrare(PanelMainScreen.tipLucrare); lpf.setLetalaNeletala(labelLetala.getText());
                     lpf.setLungaScurta(labelLunga.getText()); lpf.setDestinatieArma(labelDestinatie.getText());
                     lpf.setRegimCerere(labelCerere.getText()); lpf.setPersoanaFizica(pf);
                     lpf.setDomiciliulAltJudet(labelDomiciliuAltJudet.getText()); lpf.setResedintaAltJudet(labelResedintaAltJudet.getText());
-                    lpf.setArmaLaDomiciliu(labelArmaLaDomiciliu.getText()); lpf.setNrLucrare(DatePersoanaPanel.tfNrLucrare.getText());
-                    lpf.setDataLucrare(Service.stringToDate(DatePersoanaPanel.tfDataLucrare.getText()));
-                    lpf.setLucratorSAESP(DatePersoanaPanel.tfLucratorSAESP.getText());
+                    lpf.setArmaLaDomiciliu(labelArmaLaDomiciliu.getText()); lpf.setNrLucrare(PanelDatePersoana.tfNrLucrare.getText());
+                    lpf.setDataLucrare(Service.stringToDate(PanelDatePersoana.tfDataLucrare.getText()));
+                    lpf.setLucratorSAESP(PanelDatePersoana.tfLucratorSAESP.getText());
 
                     DataBase.addLucrare(lpf); DataBase.addPersoanaFizica(pf);
 
-                    switch (MainScreen.tipLucrare) {
+                    switch (PanelMainScreen.tipLucrare) {
                         case "PA":
                             WordDocService.createDocumentsVerificariPA();
                             break;
@@ -254,7 +254,7 @@ public class DateCererePF extends JPanel {
         btnFinalizareLucrare = new JButton("Finalizare lucrare");
         btnFinalizareLucrare.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                switch (MainScreen.tipLucrare) {
+                switch (PanelMainScreen.tipLucrare) {
                     case "PA":
                     case "ADA":
                         WordDocService.createDocumentsFinalizareLucrarePAsiADA();
@@ -295,18 +295,18 @@ public class DateCererePF extends JPanel {
                     }
                     if (result != null) {
                         assert pfs != null;
-                        DatePersoanaPanel.tfNumeSolicitant.setText(pfs.getNume());
-                        DatePersoanaPanel.tfPrenumeSolicitant.setText(pfs.getPrenume());
-                        DatePersoanaPanel.tfCNPSolicitant.setText(pfs.getCnp());
-                        DatePersoanaPanel.tfDomiciliuSolicitant.setText(pfs.getAdresaDomiciliu());
-                        DatePersoanaPanel.tfUnitateDomiciliu.setText(pfs.getUnitate01());
-                        DatePersoanaPanel.tfSubunitateDomiciliu.setText(pfs.getSubunitate01());
-                        DatePersoanaPanel.tfResedintaSolicintant.setText(pfs.getAdresaResedinta());
-                        DatePersoanaPanel.tfUnitateResedinta.setText(pfs.getUnitate02());
-                        DatePersoanaPanel.tfSubunitateresedinta.setText(pfs.getSubunitate02());
-                        DatePersoanaPanel.tfTelefonSolicitant.setText(pfs.getNumarTelefon());
-                        DatePersoanaPanel.tfSerieCI.setText(pfs.getSerieCI());
-                        DatePersoanaPanel.tfNrCI.setText(pfs.getNrCI());
+                        PanelDatePersoana.tfNumeSolicitant.setText(pfs.getNume());
+                        PanelDatePersoana.tfPrenumeSolicitant.setText(pfs.getPrenume());
+                        PanelDatePersoana.tfCNPSolicitant.setText(pfs.getCnp());
+                        PanelDatePersoana.tfDomiciliuSolicitant.setText(pfs.getAdresaDomiciliu());
+                        PanelDatePersoana.tfUnitateDomiciliu.setText(pfs.getUnitate01());
+                        PanelDatePersoana.tfSubunitateDomiciliu.setText(pfs.getSubunitate01());
+                        PanelDatePersoana.tfResedintaSolicintant.setText(pfs.getAdresaResedinta());
+                        PanelDatePersoana.tfUnitateResedinta.setText(pfs.getUnitate02());
+                        PanelDatePersoana.tfSubunitateresedinta.setText(pfs.getSubunitate02());
+                        PanelDatePersoana.tfTelefonSolicitant.setText(pfs.getNumarTelefon());
+                        PanelDatePersoana.tfSerieCI.setText(pfs.getSerieCI());
+                        PanelDatePersoana.tfNrCI.setText(pfs.getNrCI());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Nu sunt inregistrate informatii in istoric!");
@@ -333,7 +333,7 @@ public class DateCererePF extends JPanel {
                     Object[] optionsArray = optionsArrayList.toArray();
                     try {
                         result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
-                    } catch (ArrayIndexOutOfBoundsException exeption) {
+                    } catch (ArrayIndexOutOfBoundsException | NullPointerException exeption) {
                         exeption.printStackTrace();
                     }
                     for (Lucrare lpf : DataBase.getLucrari()) {
@@ -343,9 +343,21 @@ public class DateCererePF extends JPanel {
                     }
                     if (result != null) {
                         assert lpfs != null;
-                        DatePersoanaPanel.tfNrLucrare.setText(lpfs.getNrLucrare());
-                        DatePersoanaPanel.tfDataLucrare.setText(Service.dateToString(lpfs.getDataLucrare()));
-                        DatePersoanaPanel.tfLucratorSAESP.setText(lpfs.getLucratorSAESP());
+                        PanelDatePersoana.tfNrLucrare.setText(lpfs.getNrLucrare());
+                        PanelDatePersoana.tfDataLucrare.setText(Service.dateToString(lpfs.getDataLucrare()));
+                        PanelDatePersoana.tfLucratorSAESP.setText(lpfs.getLucratorSAESP());
+                        PanelDatePersoana.tfNumeSolicitant.setText(lpfs.getPersoanaFizica().getNume());
+                        PanelDatePersoana.tfPrenumeSolicitant.setText(lpfs.getPersoanaFizica().getPrenume());
+                        PanelDatePersoana.tfCNPSolicitant.setText(lpfs.getPersoanaFizica().getCnp());
+                        PanelDatePersoana.tfDomiciliuSolicitant.setText(lpfs.getPersoanaFizica().getAdresaDomiciliu());
+                        PanelDatePersoana.tfUnitateDomiciliu.setText(lpfs.getPersoanaFizica().getUnitate01());
+                        PanelDatePersoana.tfSubunitateDomiciliu.setText(lpfs.getPersoanaFizica().getSubunitate01());
+                        PanelDatePersoana.tfResedintaSolicintant.setText(lpfs.getPersoanaFizica().getAdresaResedinta());
+                        PanelDatePersoana.tfUnitateResedinta.setText(lpfs.getPersoanaFizica().getUnitate02());
+                        PanelDatePersoana.tfSubunitateresedinta.setText(lpfs.getPersoanaFizica().getSubunitate02());
+                        PanelDatePersoana.tfTelefonSolicitant.setText(lpfs.getPersoanaFizica().getNumarTelefon());
+                        PanelDatePersoana.tfSerieCI.setText(lpfs.getPersoanaFizica().getSerieCI());
+                        PanelDatePersoana.tfNrCI.setText(lpfs.getPersoanaFizica().getNrCI());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Nu sunt inregistrate informatii in istoric!");

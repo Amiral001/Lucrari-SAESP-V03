@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Lucrare {
 	
-	private String nrLucrare; 
+	private String nrLucrare, tipLucrare;
 	private LocalDate dataLucrare;
 	
 	
@@ -13,12 +13,11 @@ public class Lucrare {
 	}
 
 
-	public Lucrare(String nrLucrare, LocalDate dataLucrare) {
-		super();
+	public Lucrare(String nrLucrare, String tipLucrare, LocalDate dataLucrare) {
 		this.nrLucrare = nrLucrare;
+		this.tipLucrare = tipLucrare;
 		this.dataLucrare = dataLucrare;
 	}
-
 
 	public String getNrLucrare() {
 		return nrLucrare;
@@ -39,12 +38,20 @@ public class Lucrare {
 		this.dataLucrare = dataLucrare;
 	}
 
+	public String getTipLucrare() {
+		return tipLucrare;
+	}
+
+	public void setTipLucrare(String tipLucrare) {
+		this.tipLucrare = tipLucrare;
+	}
 
 	@Override
 	public String toString() {
-		return "Lucrare [nrLucrare=" + nrLucrare + ", dataLucrare=" + dataLucrare + "]";
+		return "Lucrare{" +
+				"nrLucrare='" + nrLucrare + '\'' +
+				", tipLucrare='" + tipLucrare + '\'' +
+				", dataLucrare=" + dataLucrare +
+				'}';
 	}
-	
-	
-
 }
