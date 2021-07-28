@@ -40,6 +40,7 @@ public class LucrarePJ extends JPanel {
 		JButton btnVerificari = new JButton("Genereaza documentatie verificari");
 		btnVerificari.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				//generare documentelor UTAI si adresa subunitate dom sau res
 			}
 		});
 		btnVerificari.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -104,11 +105,13 @@ public class LucrarePJ extends JPanel {
 		dateSocietatePanel.add(btnPreluareDatePersoane);
 		
 		JButton btnPreluareDateLucrare = new JButton("Date privind lucrarea");
+		//implementarea pentru preluarea datelor de lucrare PJ
 		btnPreluareDateLucrare.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		btnPreluareDateLucrare.setBounds(590, 351, 448, 36);
 		dateSocietatePanel.add(btnPreluareDateLucrare);
 		
 		JButton btnFinalizareLucrare = new JButton("Finalizare lucrare");
+		//generare Raport final verificari
 		btnFinalizareLucrare.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		btnFinalizareLucrare.setBounds(10, 351, 542, 36);
 		dateSocietatePanel.add(btnFinalizareLucrare);
