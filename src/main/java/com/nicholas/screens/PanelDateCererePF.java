@@ -22,8 +22,8 @@ public class PanelDateCererePF extends JPanel {
 
     public  static PersoanaFizica pf; public static LucrarePersoanaFizica lpf;
 
-    public static JLabel lblLetalaNeletala, lblLungaScurta, lblDestinaieArm, lblNumarCi_1_1, lblDomiciliuInAlt, lblNumarCi_1_1_1, lblNumarCi_1_1_1_1, labelLetala,
-            labelLunga, labelDestinatie, labelCerere, labelDomiciliuAltJudet, labelResedintaAltJudet, labelArmaLaDomiciliu;
+    public static JLabel lblLetalaNeletala, lblLungaScurta, lblDestinaieArm, lblNumarCi_1_1, lblDomiciliuInAlt, lblNumarCi_1_1_1, lblNumarCi_1_1_1_1, tfLetalaNeletala,
+            tfScurtaLunga, tfDestinatieArma, tfRegimCerere, tfDomInAltJud, tfResInAltJud, tfArmaLaDomiciliu;
 
     public static JComboBox letalaNeletalaComboBox, lungaScurtaComboBox, destinatieComboBox, regimCerereComboBox, domiciliuAltJudetComboBox, resedintaAltJudetComboBox, armaLaDomiciliuComboBox;
 
@@ -87,13 +87,13 @@ public class PanelDateCererePF extends JPanel {
 
 
         String[] letalaNeletala = {"letală", "neletală"};
-        labelLetala = new JLabel("letală");
+        tfLetalaNeletala = new JLabel("letală");
         letalaNeletalaComboBox = new JComboBox(letalaNeletala);
         letalaNeletalaComboBox.setBounds(216, 13, 301, 33);
         letalaNeletalaComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == letalaNeletalaComboBox) {
-                    labelLetala.setText(Objects.requireNonNull(letalaNeletalaComboBox.getSelectedItem()).toString());
+                    tfLetalaNeletala.setText(Objects.requireNonNull(letalaNeletalaComboBox.getSelectedItem()).toString());
                 }
             }
         });
@@ -102,13 +102,13 @@ public class PanelDateCererePF extends JPanel {
 
 
         String[] lungaScurtaArray = {"scurtă", "lungă"};
-        labelLunga = new JLabel("scurtă");
+        tfScurtaLunga = new JLabel("scurtă");
         lungaScurtaComboBox = new JComboBox(lungaScurtaArray);
         lungaScurtaComboBox.setBounds(773, 13, 382, 33);
         lungaScurtaComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == lungaScurtaComboBox) {
-                    labelLetala.setText(Objects.requireNonNull(lungaScurtaComboBox.getSelectedItem()).toString());
+                    tfLetalaNeletala.setText(Objects.requireNonNull(lungaScurtaComboBox.getSelectedItem()).toString());
                 }
             }
         });
@@ -117,13 +117,13 @@ public class PanelDateCererePF extends JPanel {
 
 
         String[] destinatie = {"autoapărare", "vânătoare", "tir sportiv", "apărare și pază", "colecție"};
-        labelDestinatie = new JLabel("autoapărare");
+        tfDestinatieArma = new JLabel("autoapărare");
         destinatieComboBox = new JComboBox(destinatie);
         destinatieComboBox.setBounds(216, 60, 301, 33);
         destinatieComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == destinatieComboBox) {
-                    labelDestinatie.setText(destinatieComboBox.getSelectedItem().toString());
+                    tfDestinatieArma.setText(destinatieComboBox.getSelectedItem().toString());
                 }
             }
         });
@@ -132,13 +132,13 @@ public class PanelDateCererePF extends JPanel {
 
 
         String[] regimCerere = {"normal", "urgență"};
-        labelCerere = new JLabel("normal");
+        tfRegimCerere = new JLabel("normal");
         regimCerereComboBox = new JComboBox(regimCerere);
         regimCerereComboBox.setBounds(773, 60, 382, 33);
         regimCerereComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == regimCerereComboBox) {
-                    labelCerere.setText(Objects.requireNonNull(regimCerereComboBox.getSelectedItem()).toString());
+                    tfRegimCerere.setText(Objects.requireNonNull(regimCerereComboBox.getSelectedItem()).toString());
                 }
             }
         });
@@ -147,26 +147,26 @@ public class PanelDateCererePF extends JPanel {
 
 
         String[] DaNu = {"Nu", "Da"};
-        labelDomiciliuAltJudet = new JLabel("Nu");
+        tfDomInAltJud = new JLabel("Nu");
         domiciliuAltJudetComboBox = new JComboBox(DaNu);
         domiciliuAltJudetComboBox.setBounds(256, 107, 75, 33);
         domiciliuAltJudetComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == domiciliuAltJudetComboBox) {
-                    labelDomiciliuAltJudet.setText(Objects.requireNonNull(domiciliuAltJudetComboBox.getSelectedItem()).toString());
+                    tfDomInAltJud.setText(Objects.requireNonNull(domiciliuAltJudetComboBox.getSelectedItem()).toString());
                 }
             }
         });
         domiciliuAltJudetComboBox.setFont(new Font("Times New Roman", Font.BOLD, 24));
         add(domiciliuAltJudetComboBox);
 
-        labelResedintaAltJudet = new JLabel("Nu");
+        tfResInAltJud = new JLabel("Nu");
         resedintaAltJudetComboBox = new JComboBox(DaNu);
         resedintaAltJudetComboBox.setBounds(636, 105, 75, 33);
         resedintaAltJudetComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == resedintaAltJudetComboBox) {
-                    labelResedintaAltJudet.setText(Objects.requireNonNull(resedintaAltJudetComboBox.getSelectedItem()).toString());
+                    tfResInAltJud.setText(Objects.requireNonNull(resedintaAltJudetComboBox.getSelectedItem()).toString());
                 }
             }
         });
@@ -174,13 +174,13 @@ public class PanelDateCererePF extends JPanel {
         add(resedintaAltJudetComboBox);
 
         String[] DaNu2 = {"Da", "Nu"};
-		labelArmaLaDomiciliu = new JLabel("Da");
+		tfArmaLaDomiciliu = new JLabel("Da");
         armaLaDomiciliuComboBox = new JComboBox(DaNu2);
         armaLaDomiciliuComboBox.setBounds(1080, 107, 75, 33);
         armaLaDomiciliuComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getSource() == armaLaDomiciliuComboBox) {
-                    labelArmaLaDomiciliu.setText(armaLaDomiciliuComboBox.getSelectedItem().toString());
+                    tfArmaLaDomiciliu.setText(armaLaDomiciliuComboBox.getSelectedItem().toString());
                 }
             }
         });
@@ -205,11 +205,11 @@ public class PanelDateCererePF extends JPanel {
                     pf.setSubunitate02(PanelDatePersoana.tfSubunitateresedinta.getText()); pf.setNumarTelefon(PanelDatePersoana.tfTelefonSolicitant.getText());
                     pf.setSerieCI(PanelDatePersoana.tfSerieCI.getText()); pf.setNrCI(PanelDatePersoana.tfNrCI.getText());
 
-                    lpf.setTipLucrare(PanelMainScreen.tipLucrare); lpf.setLetalaNeletala(labelLetala.getText());
-                    lpf.setLungaScurta(labelLunga.getText()); lpf.setDestinatieArma(labelDestinatie.getText());
-                    lpf.setRegimCerere(labelCerere.getText()); lpf.setPersoanaFizica(pf);
-                    lpf.setDomiciliulAltJudet(labelDomiciliuAltJudet.getText()); lpf.setResedintaAltJudet(labelResedintaAltJudet.getText());
-                    lpf.setArmaLaDomiciliu(labelArmaLaDomiciliu.getText()); lpf.setNrLucrare(PanelDatePersoana.tfNrLucrare.getText());
+                    lpf.setTipLucrare(PanelMainScreen.tipLucrare); lpf.setLetalaNeletala(tfLetalaNeletala.getText());
+                    lpf.setLungaScurta(tfScurtaLunga.getText()); lpf.setDestinatieArma(tfDestinatieArma.getText());
+                    lpf.setRegimCerere(tfRegimCerere.getText()); lpf.setPersoanaFizica(pf);
+                    lpf.setDomiciliulAltJudet(tfDomInAltJud.getText()); lpf.setResedintaAltJudet(tfResInAltJud.getText());
+                    lpf.setArmaLaDomiciliu(tfArmaLaDomiciliu.getText()); lpf.setNrLucrare(PanelDatePersoana.tfNrLucrare.getText());
                     lpf.setDataLucrare(Service.stringToDate(PanelDatePersoana.tfDataLucrare.getText()));
                     lpf.setLucratorSAESP(PanelDatePersoana.tfLucratorSAESP.getText());
 
@@ -244,7 +244,7 @@ public class PanelDateCererePF extends JPanel {
         btnSuspendaLucrare.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	    motivSuspendareLucrare = ModifiableJOptionPane.showInputDialog(JFrameFactore.getFrame(),"Introduceți motivul!");
-                WordDocService.createDocumentsSuspendareLucrare();
+                WordDocService.createRaportSuspendareLucrare();
         	}
         });
         btnSuspendaLucrare.setBounds(10, 199, 570, 36);
@@ -257,7 +257,7 @@ public class PanelDateCererePF extends JPanel {
                 switch (PanelMainScreen.tipLucrare) {
                     case "PA":
                     case "ADA":
-                        WordDocService.createDocumentsFinalizareLucrarePAsiADA();
+                        WordDocService.createRaportFinalizareLucrarePAsiADA();
                         break;
                     case "V":
                     case "D":

@@ -21,8 +21,8 @@ public class PanelLucrarePJ extends JPanel {
 
 		setLayout(null);
 		setBounds(0, 0, 1200, 800);
-		
-		GridLayout gridLayout = new GridLayout(2,1); JPanel bigPanel = new JPanel();
+
+		JPanel bigPanel = new JPanel();
 		bigPanel.setBounds(0, 10, 1200, 800);
 		
 		PanelDatePersoana panelDatePersoana = new PanelDatePersoana(); panelDatePersoana.setBounds(0, 0, 1200, 383);
@@ -78,6 +78,15 @@ public class PanelLucrarePJ extends JPanel {
 		btnVerificari.setBounds(10, 304, 542, 36);
 		dateSocietatePanel.add(btnVerificari);
 
+		JButton btnFinalizareLucrare = new JButton("Finalizare lucrare");
+		btnFinalizareLucrare.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				WordDocService.createDocumentsFinalizareLucrareDG();
+			}
+		});
+		btnFinalizareLucrare.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		btnFinalizareLucrare.setBounds(10, 351, 542, 36);
+		dateSocietatePanel.add(btnFinalizareLucrare);
 
 		JButton btnPreluareDatePersoane = new JButton("Date privind persoana");
 		btnPreluareDatePersoane.addActionListener(new ActionListener() {
@@ -178,14 +187,6 @@ public class PanelLucrarePJ extends JPanel {
 		btnPreluareDateLucrare.setBounds(590, 351, 448, 36);
 		dateSocietatePanel.add(btnPreluareDateLucrare);
 
-		JButton btnFinalizareLucrare = new JButton("Finalizare lucrare");
-		//generare Raport final verificari
-		btnFinalizareLucrare.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		btnFinalizareLucrare.setBounds(10, 351, 542, 36);
-		dateSocietatePanel.add(btnFinalizareLucrare);
-
-		add(bigPanel);
-
 
 		JButton btnBack = new JButton("Back");
 		btnBack.setIcon(Service.changeIconSize(new ImageIcon(Service.getPath("iconBack.png")), 100, 100));
@@ -199,5 +200,10 @@ public class PanelLucrarePJ extends JPanel {
 			}
 		});
 		btnBack.setBounds(1070, 315, 91, 72);dateSocietatePanel.add(btnBack);
+
+
+		add(bigPanel);
+
+
 	}
 }
