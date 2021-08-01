@@ -28,6 +28,7 @@ public class Service {
 			ld = LocalDate.parse(string, formatter);
 		} catch (DateTimeParseException e) {
 			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, "Nu a fost completata data corect!");
 		}
 		return ld;
 	}

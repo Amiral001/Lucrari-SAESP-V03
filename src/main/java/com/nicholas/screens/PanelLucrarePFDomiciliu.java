@@ -15,13 +15,13 @@ public class PanelLucrarePFDomiciliu extends JPanel {
 		JPanel bigPanel = new JPanel();
 		bigPanel.setBounds(0, 10, 1200, 800);
 		
-		PanelDatePersoana panelDatePersoana = new PanelDatePersoana();
+		PanelDatePersoanaFizica panelDatePersoanaFizica = new PanelDatePersoanaFizica();
 
-		PanelDatePersoana.lblSerieCi.setVisible(false); PanelDatePersoana.tfSerieCI.setVisible(false);
-		PanelDatePersoana.lblNumarCi.setVisible(false); PanelDatePersoana.tfNrCI.setVisible(false);
-		PanelDatePersoana.lblLucratorSaesp.setVisible(false); PanelDatePersoana.tfLucratorSAESP.setVisible(false);
-		panelDatePersoana.setBounds(0, 11, 1200, 383);
-		panelDatePersoana.setLayout(null);
+		PanelDatePersoanaFizica.lblSerieCi.setVisible(false); PanelDatePersoanaFizica.tfSerieCI.setVisible(false);
+		PanelDatePersoanaFizica.lblNumarCi.setVisible(false); PanelDatePersoanaFizica.tfNrCI.setVisible(false);
+		PanelDatePersoanaFizica.lblLucratorSaesp.setVisible(false); PanelDatePersoanaFizica.tfLucratorSAESP.setVisible(false);
+		panelDatePersoanaFizica.setBounds(0, 11, 1200, 383);
+		panelDatePersoanaFizica.setLayout(null);
 		
 		
 		PanelDateCererePF panelDateCererePF = new PanelDateCererePF();
@@ -29,6 +29,8 @@ public class PanelLucrarePFDomiciliu extends JPanel {
 		panelDateCererePF.btnBack.setLocation(1064, 175);
 		panelDateCererePF.btnFinalizareLucrare.setLocation(10, 224);
 		panelDateCererePF.btnVerificari.setLocation(10, 175);
+		panelDateCererePF.armaLaDomiciliuComboBox.setLocation(1084,110);
+		panelDateCererePF.lblNumarCi_1_1_1_1.setLocation(848,110);
 		PanelDateCererePF.lblLetalaNeletala.setVisible(false); PanelDateCererePF.letalaNeletalaComboBox.setVisible(false);
 		PanelDateCererePF.lblLungaScurta.setVisible(false); PanelDateCererePF.lungaScurtaComboBox.setVisible(false);
 		PanelDateCererePF.lblDestinaieArm.setVisible(false); PanelDateCererePF.destinatieComboBox.setVisible(false);
@@ -39,7 +41,7 @@ public class PanelLucrarePFDomiciliu extends JPanel {
 		bigPanel.setLayout(null);
 		
 		
-		bigPanel.add(panelDatePersoana);
+		bigPanel.add(panelDatePersoanaFizica);
 		bigPanel.add(panelDateCererePF);
 		
 		add(bigPanel);

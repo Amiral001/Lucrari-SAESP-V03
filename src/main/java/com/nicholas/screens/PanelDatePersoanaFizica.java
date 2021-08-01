@@ -1,11 +1,13 @@
 package com.nicholas.screens;
 
+import com.nicholas.utils.FixedJComboBox;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class PanelDatePersoana extends JPanel {
+public class PanelDatePersoanaFizica extends JPanel {
 
 
 	public static JTextField tfNrLucrare, tfDataLucrare, tfNumeSolicitant, tfPrenumeSolicitant, tfCNPSolicitant, tfDomiciliuSolicitant, tfResedintaSolicintant, 
@@ -17,7 +19,7 @@ public class PanelDatePersoana extends JPanel {
 	public static JComboBox sexSolicitantComboBox; public static JCheckBox chckbxDomAltJud, chckbxResAltJud;
 
 
-	public PanelDatePersoana() {
+	public PanelDatePersoanaFizica() {
 		setLayout(null);		
 		setBounds(0, 0, 1200, 484);
 		
@@ -124,6 +126,7 @@ public class PanelDatePersoana extends JPanel {
 		tfLucratorSAESP = new JTextField(); tfLucratorSAESP.setHorizontalAlignment(SwingConstants.CENTER); tfLucratorSAESP.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		tfLucratorSAESP.setColumns(10); tfLucratorSAESP.setBounds(206, 434, 955, 36); add(tfLucratorSAESP);
 
+
 		chckbxDomAltJud = new JCheckBox("Alt jud.");
 		chckbxDomAltJud.setHorizontalAlignment(SwingConstants.CENTER);
 		chckbxDomAltJud.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -143,7 +146,7 @@ public class PanelDatePersoana extends JPanel {
 
 		String[] MF = {"M", "F"};
 		sexSolicitant = new JLabel("M");
-		sexSolicitantComboBox = new JComboBox(MF);
+		sexSolicitantComboBox = new FixedJComboBox(MF);
 		sexSolicitantComboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (e.getSource() == sexSolicitantComboBox) {
@@ -152,7 +155,7 @@ public class PanelDatePersoana extends JPanel {
 			}
 		});
 		sexSolicitantComboBox.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		sexSolicitantComboBox.setBounds(1060, 105, 101, 33);
+		sexSolicitantComboBox.setBounds(1080, 105, 70, 33);
 		add(sexSolicitantComboBox);
 
 	}

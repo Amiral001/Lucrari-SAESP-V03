@@ -1,8 +1,10 @@
 package com.nicholas.utils;
 
-import com.nicholas.screens.*;
+import com.nicholas.screens.PanelDateCererePF;
+import com.nicholas.screens.PanelDatePersoanaFizica;
+import com.nicholas.screens.PanelDatePersoanaJuridica;
+import com.nicholas.screens.PanelMainScreen;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.ss.formula.atp.DateParser;
 import org.apache.poi.xwpf.usermodel.*;
 import org.jetbrains.annotations.NotNull;
 
@@ -140,16 +142,16 @@ public class WordDocService {
 
         createDocumentsVerificariADA();
         if (PanelDateCererePF.tfLetalaNeletala.getText().equals("neletală")) {
-            if (PanelDatePersoana.tfResedintaSolicintant.getText().equals("")) {
+            if (PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
                 createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "D");
             } else {
                 if (PanelDateCererePF.tfArmaLaDomiciliu.getText().equals("Da")) {
-                    if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
+                    if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
                         createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "D");
                     } else {
                         createSubunitate(Service.getPath("adresaSubunitateV02.docx"), "D");
                     }
-                    if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
+                    if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
                         createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "R");
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
@@ -159,7 +161,7 @@ public class WordDocService {
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
                     }
                 } else {
-                    if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
+                    if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
                         createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "D");
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
@@ -168,7 +170,7 @@ public class WordDocService {
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
                         WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
                     }
-                    if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
+                    if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
                         createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "R");
                     } else {
                         createSubunitate(Service.getPath("adresaSubunitateV02.docx"), "R");
@@ -176,12 +178,12 @@ public class WordDocService {
                 }
             }
         } else {
-            if (PanelDatePersoana.tfResedintaSolicintant.getText().equals("")) {
+            if (PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
                 createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "D");
                 WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
                 WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
             } else {
-                if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
+                if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
                     createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "D");
                     WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
                     WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
@@ -190,7 +192,7 @@ public class WordDocService {
                     WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
                     WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
                 }
-                if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
+                if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
                     createSubunitate(Service.getPath("adresaSubunitateV01.docx"), "R");
                     WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
                     WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
@@ -210,73 +212,81 @@ public class WordDocService {
     }
 
     public static void createDocumentsVerificariViza() {
+
         createDocumentsVerificariADA();
-        createDocumentsVerificariADA();
-        if (PanelDateCererePF.tfArmaLaDomiciliu.getText().equals("Da")) {
-            if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "R");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
+        if (!PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
+            if (PanelDateCererePF.tfArmaLaDomiciliu.getText().equals("Da")) {
+                if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "R");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "R");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
+                }
+                if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "D");
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "D");
+                }
             } else {
-                createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "R");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-            }
-            if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "D");
-            } else {
-                createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "D");
+                if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "R");
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "R");
+                }
+                if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "D");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "D");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
+                }
             }
         } else {
-            if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "R");
-            } else {
-                createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "R");
-            }
-            if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "D");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-            } else {
-                createSubunitate(Service.getPath("adresaSubunitateVV02.docx"), "D");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-            }
+            createSubunitate(Service.getPath("adresaSubunitateVV01.docx"), "D");
         }
     }
 
     public static void createDocumentsVerificariDR() {
         createDocumentsVerificariADA();
-        if (PanelDateCererePF.tfArmaLaDomiciliu.getText().equals("Da")) {
-            if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "R");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
+        if (!PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
+            if (PanelDateCererePF.tfArmaLaDomiciliu.getText().equals("Da")) {
+                if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "R");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "R");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
+                }
+                if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "D");
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "D");
+                }
             } else {
-                createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "R");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-            }
-            if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "D");
-            } else {
-                createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "D");
+                if (!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "R");
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "R");
+                }
+                if (!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()) {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "D");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
+                } else {
+                    createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "D");
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
+                    WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
+                }
             }
         } else {
-            if (PanelDateCererePF.tfResInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "R");
-            } else {
-                createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "R");
-            }
-            if (PanelDateCererePF.tfDomInAltJud.getText().equals("Nu")) {
-                createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "D");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-            } else {
-                createSubunitate(Service.getPath("adresaSubunitateDRV02.docx"), "D");
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-            }
+            createSubunitate(Service.getPath("adresaSubunitateDRV01.docx"), "D");
         }
     }
 
@@ -297,32 +307,32 @@ public class WordDocService {
         toReplace.add("datalimitaraspuns");
 
         ArrayList <String> newValues = new ArrayList<>();
-        newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
         newValues.add(Service.currentDateValue());
 
 
-        newValues.add(PanelDatePersoana.tfLucratorSAESP.getText());
+        newValues.add(PanelDatePersoanaFizica.tfLucratorSAESP.getText());
 
-        newValues.add(PanelDatePersoana.tfDataLucrare.getText());
-        newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
 
-        if (PanelDatePersoana.tfResedintaSolicintant.getText().equals("")) {
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText());
+        if (PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText());
         } else {
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText() + " și reședință în " + PanelDatePersoana.tfResedintaSolicintant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText() + " și reședință în " + PanelDatePersoanaFizica.tfResedintaSolicintant.getText());
         }
 
-        newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfTelefonSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfTelefonSolicitant.getText());
         newValues.add(PanelDateCererePF.tfLetalaNeletala.getText());
         newValues.add(PanelDateCererePF.tfDestinatieArma.getText());
         newValues.add(Service.getLimitDate());
 
         WordDocService.replace(Service.getPath("adresaSubunitateV01.docx"),
-                StringsValue.currentFolder+"/Adresa_subunitate_"+ PanelDatePersoana.tfLucratorSAESP.getText() +".docx", toReplace, newValues);
-        WordDocService.deleteParagraph(StringsValue.currentFolder+"/Adresa_subunitate_"+ PanelDatePersoana.tfLucratorSAESP.getText() +".docx", "unitate02");
-        correctDocForSexWords(StringsValue.currentFolder+"/Adresa_subunitate_"+ PanelDatePersoana.tfLucratorSAESP.getText() +".docx");
+                StringsValue.currentFolder+"/Adresa_subunitate_"+ PanelDatePersoanaFizica.tfLucratorSAESP.getText() +".docx", toReplace, newValues);
+        WordDocService.deleteParagraph(StringsValue.currentFolder+"/Adresa_subunitate_"+ PanelDatePersoanaFizica.tfLucratorSAESP.getText() +".docx", "unitate02");
+        correctDocForSexWords(StringsValue.currentFolder+"/Adresa_subunitate_"+ PanelDatePersoanaFizica.tfLucratorSAESP.getText() +".docx");
     }
 
     private static void createSubunitate(String path, @org.jetbrains.annotations.NotNull String RD) {
@@ -343,26 +353,26 @@ public class WordDocService {
         toReplace.add("destinatiearma");
 
         ArrayList <String> newValues = new ArrayList<>();
-        newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
         newValues.add(Service.currentDateValue());
 
         if (RD.equals("D")) {
-            newValues.add(PanelDatePersoana.tfUnitateDomiciliu.getText());
-            newValues.add(PanelDatePersoana.tfSubunitateDomiciliu.getText());
+            newValues.add(PanelDatePersoanaFizica.tfUnitateDomiciliu.getText());
+            newValues.add(PanelDatePersoanaFizica.tfSubunitateDomiciliu.getText());
         } else if (RD.equals("R")) {
-            newValues.add(PanelDatePersoana.tfUnitateResedinta.getText());
-            newValues.add(PanelDatePersoana.tfSubunitateresedinta.getText());
+            newValues.add(PanelDatePersoanaFizica.tfUnitateResedinta.getText());
+            newValues.add(PanelDatePersoanaFizica.tfSubunitateresedinta.getText());
         }
-        newValues.add(PanelDatePersoana.tfDataLucrare.getText());
-        newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-        if (PanelDatePersoana.tfResedintaSolicintant.getText().equals("")) {
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+        if (PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText());
         } else {
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText() + " și reședință în " + PanelDatePersoana.tfResedintaSolicintant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText() + " și reședință în " + PanelDatePersoanaFizica.tfResedintaSolicintant.getText());
         }
-        newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfTelefonSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfTelefonSolicitant.getText());
         if (PanelMainScreen.tipLucrare.equals("D")) {
             newValues.add("schimbarea domiciliului în permisul de armă");
         } else  {
@@ -374,14 +384,6 @@ public class WordDocService {
         newValues.add(PanelDateCererePF.tfDestinatieArma.getText());
 
         WordDocService.replace(path, StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
-
-        if(PanelDateCererePF.tfArmaLaDomiciliu.getText().equals("Da")){
-            WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.conditiiAsigurare);
-            WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateR.docx", StringsValue.mentiunePV);
-        }else {
-            WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.conditiiAsigurare);
-            WordDocService.deleteParagraph(StringsValue.currentFolder + "/Adresa_subunitateD.docx", StringsValue.mentiunePV);
-        }
         correctDocForSexWords(StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx");
 
     }
@@ -402,17 +404,17 @@ public class WordDocService {
 
 
         ArrayList <String> newValues = new ArrayList<>();
-        newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
         newValues.add(Service.currentDateValue());
         newValues.add(Service.currentYearValue());
         newValues.add(Service.currentMounthValue());
         newValues.add(Service.currentDayValue());
-        newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
         newValues.add(generateTipLucrare());
-        newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfDataLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
 
         WordDocService.replace(Service.getPath("PvBD.docx"), StringsValue.currentFolder+"/PvBD.docx", toReplace, newValues);
         correctDocForSexWords(StringsValue.currentFolder+"/PvBD.docx");
@@ -429,11 +431,11 @@ public class WordDocService {
         toReplace.add("perioadasolicitata");
 
         ArrayList<String> newValues = new ArrayList<>();
-        newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
         newValues.add(Service.currentDateValue());
-        newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
         newValues.add(generateTipLucrare());
         newValues.add(generarePerioadaUTAI());
 
@@ -481,9 +483,9 @@ public class WordDocService {
         ArrayList<String> m = StringsValue.sexStringsReplacesM;
         ArrayList<String> f = StringsValue.sexStringsReplacesF;
 
-        if (PanelDatePersoana.sexSolicitant.getText().equals("M")) {
+        if (PanelDatePersoanaFizica.sexSolicitant.getText().equals("M")) {
             replace(path, t, m);
-        } else if (PanelDatePersoana.sexSolicitant.getText().equals("F")) {
+        } else if (PanelDatePersoanaFizica.sexSolicitant.getText().equals("F")) {
             replace(path, t, f);
         }
     }
@@ -503,16 +505,16 @@ public class WordDocService {
 
         ArrayList<String> newValues = new ArrayList<>();
         try {
-            newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
             newValues.add(Service.currentDateValue());
-            newValues.add(PanelDatePersoana.tfDataLucrare.getText());
-            newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
             newValues.add(PanelDateCererePF.tfLetalaNeletala.getText());
             newValues.add(PanelDateCererePF.tfDestinatieArma.getText());
             newValues.add(PanelDateCererePF.motivSuspendareLucrare);
-            if (PanelDateCererePF.tfLetalaNeletala.equals("letală")) {
+            if (PanelDateCererePF.tfLetalaNeletala.getText().equals("letală")) {
                 newValues.add(StringsValue.cadruSuspendareLetala);
             } else {
                 newValues.add(StringsValue.cadruSuspendareNeletala);
@@ -539,17 +541,18 @@ public class WordDocService {
 
         ArrayList<String> newValues = new ArrayList<>();
         try {
-            newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
             newValues.add(Service.currentDateValue());
-            newValues.add(PanelDatePersoana.tfDataLucrare.getText());
-            newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
             newValues.add(PanelDateCererePF.tfLetalaNeletala.getText());
             newValues.add(PanelDateCererePF.tfDestinatieArma.getText());
 
             WordDocService.replace(Service.getPath("RaportFinalAutorizatie.docx"), StringsValue.currentFolder + "/Raport_Final.docx", toReplace, newValues);
             correctDocForSexWords(StringsValue.currentFolder + "/Raport_Final.docx");
+            JOptionPane.showMessageDialog(null, "Raportul de finalizare a lucrării a fost generat cu succes");
         } catch (NullPointerException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error: "+ e);
@@ -568,12 +571,12 @@ public class WordDocService {
 
         ArrayList<String> newValues = new ArrayList<>();
         try {
-            newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
             newValues.add(Service.currentDateValue());
-            newValues.add(PanelDatePersoana.tfDataLucrare.getText());
-            newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
             switch (PanelMainScreen.tipLucrare) {
                 case "V":
                     newValues.add("prelungirea valabilității permisului/permiselor de armă");
@@ -599,7 +602,7 @@ public class WordDocService {
         // Casuta de dialog pentru confirmare este creata la adaugarea lucrarii in ArrayList -> DataBase Class
         createUTAI();
         createPVBd();
-        if (PanelDatePersoana.tfResedintaSolicintant.getText().equals(""))
+        if (PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals(""))
         createSubunitateDG("D");
         else {
             createSubunitateDG("D");
@@ -625,17 +628,17 @@ public class WordDocService {
         toReplace.add("datalimitaraspuns");
 
         ArrayList <String> newValues = new ArrayList<>();
-        newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
         newValues.add(Service.currentDateValue());
 
         if (RD.equals("D")) {
-            newValues.add(PanelDatePersoana.tfUnitateDomiciliu.getText());
-            newValues.add(PanelDatePersoana.tfSubunitateDomiciliu.getText());
+            newValues.add(PanelDatePersoanaFizica.tfUnitateDomiciliu.getText());
+            newValues.add(PanelDatePersoanaFizica.tfSubunitateDomiciliu.getText());
         } else if (RD.equals("R")) {
-            newValues.add(PanelDatePersoana.tfUnitateResedinta.getText());
-            newValues.add(PanelDatePersoana.tfSubunitateresedinta.getText());
+            newValues.add(PanelDatePersoanaFizica.tfUnitateResedinta.getText());
+            newValues.add(PanelDatePersoanaFizica.tfSubunitateresedinta.getText());
         }
-        newValues.add(PanelDatePersoana.tfDataLucrare.getText());
+        newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
         newValues.add(PanelDatePersoanaJuridica.tfDenumireSocietate.getText());
         if (!PanelDatePersoanaJuridica.tfPLSocietate.getText().equals("")){
             newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText());
@@ -647,22 +650,31 @@ public class WordDocService {
         } else {
             newValues.add("ca gestionar armament și muniție");
         }
-        newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
-        if (PanelDatePersoana.tfResedintaSolicintant.getText().equals("")) {
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+        if (PanelDatePersoanaFizica.tfResedintaSolicintant.getText().equals("")) {
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText());
         } else {
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText() + " și reședință în " + PanelDatePersoana.tfResedintaSolicintant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText() + " și reședință în " + PanelDatePersoanaFizica.tfResedintaSolicintant.getText());
         }
-        newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
-        newValues.add(PanelDatePersoana.tfTelefonSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
+        newValues.add(PanelDatePersoanaFizica.tfTelefonSolicitant.getText());
         newValues.add(Service.getLimitDate());
 
-        if(!PanelDatePersoana.chckbxDomAltJud.isSelected()){
-            WordDocService.replace(Service.getPath("adresaSubunitateGDV01.docx"), StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
-        } else {
-            WordDocService.replace(Service.getPath("adresaSubunitateGDV02.docx"), StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
+        if (RD.equals("D")) {
+            if(!PanelDatePersoanaFizica.chckbxDomAltJud.isSelected()){
+                WordDocService.replace(Service.getPath("adresaSubunitateGDV01.docx"), StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
+            } else {
+                WordDocService.replace(Service.getPath("adresaSubunitateGDV02.docx"), StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
+            }
+        } else if (RD.equals("R")) {
+            if(!PanelDatePersoanaFizica.chckbxResAltJud.isSelected()){
+                WordDocService.replace(Service.getPath("adresaSubunitateGDV01.docx"), StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
+            } else {
+                WordDocService.replace(Service.getPath("adresaSubunitateGDV02.docx"), StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx", toReplace, newValues);
+            }
         }
+
         correctDocForSexWords(StringsValue.currentFolder+"/Adresa_subunitate"+RD+".docx");
     }
 
@@ -687,47 +699,63 @@ public class WordDocService {
         toReplace.add("unitate01");
         toReplace.add("unitate02");
         toReplace.add("cadrullegalgd");
+        toReplace.add("motsolpjrasp");
 
 
         ArrayList<String> newValues = new ArrayList<>();
         try {
-            newValues.add(PanelDatePersoana.tfNrLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNrLucrare.getText());
             newValues.add(Service.currentDateValue());
-            newValues.add(PanelDatePersoana.tfNumeSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfPrenumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfNumeSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
             if(PanelMainScreen.tipLucrare.equals("DOT")){
                 newValues.add("dotării cu armament letal / neletal");
             } else {
                 newValues.add("ca gestionar armament și muniție");
             }
-            newValues.add(PanelDatePersoana.tfDataLucrare.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
             newValues.add(PanelDatePersoanaJuridica.tfDenumireSocietate.getText());
             if (!PanelDatePersoanaJuridica.tfPLSocietate.getText().equals("")){
                 newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText());
             } else {
                 newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText()+" și punct de lucru în " + PanelDatePersoanaJuridica.tfPLSocietate.getText());
             }
-            newValues.add(PanelDatePersoana.tfDomiciliuSolicitant.getText());
-            newValues.add(PanelDatePersoana.tfCNPSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText());
+            newValues.add(PanelDatePersoanaFizica.tfCNPSolicitant.getText());
             newValues.add(PanelDatePersoanaJuridica.tfEmitentAtestat.getText());
             newValues.add(PanelDatePersoanaJuridica.tfDataAtestat.getText());
             newValues.add(PanelDatePersoanaJuridica.tfNrSerieAtestat.getText());
             newValues.add(PanelDatePersoanaJuridica.tfDataCurs.getText());
             newValues.add(PanelDatePersoanaJuridica.tfEmitentCurs.getText());
-            newValues.add(PanelDatePersoana.tfUnitateDomiciliu.getText());
-            newValues.add(PanelDatePersoana.tfSubunitateDomiciliu.getText());
+            newValues.add(PanelDatePersoanaFizica.tfUnitateDomiciliu.getText());
+            newValues.add(PanelDatePersoanaFizica.tfSubunitateDomiciliu.getText());
             if(PanelMainScreen.tipLucrare.equals("DOT")){
                 newValues.add(StringsValue.cadruLegalDotare);
             } else {
                 newValues.add(StringsValue.cadruLegalGestionar);
             }
+            if(PanelMainScreen.tipLucrare.equals("DOT")){
+                newValues.add("dotarea cu armament letal / neletal");
+            } else {
+                newValues.add("ca gestionar armament și muniție");
+            }
+
+            if(PanelMainScreen.tipLucrare.equals("DOT")){
+                WordDocService.replace(Service.getPath("RaportFinalDotare.docx"), StringsValue.currentFolder + "/Raport_Final.docx", toReplace, newValues);
+            }else {
+                WordDocService.replace(Service.getPath("RaportFinalGestionar.docx"), StringsValue.currentFolder + "/Raport_Final.docx", toReplace, newValues);
+            }
 
 
-            WordDocService.replace(Service.getPath("RaportFinalGestionarDotare.docx"), StringsValue.currentFolder + "/Raport_Final.docx", toReplace, newValues);
             WordDocService.replace(Service.getPath("adresaRaspunsDG.docx"), StringsValue.currentFolder + "/Adresa_Raspuns.docx", toReplace, newValues);
 
+            if(PanelMainScreen.tipLucrare.equals("GES")){
+                WordDocService.deleteParagraph(StringsValue.currentFolder + "/Raport_Final.docx", StringsValue.mentiuneAtestat);
+            }
             correctDocForSexWords(StringsValue.currentFolder + "/Raport_Final.docx");
             correctDocForSexWords(StringsValue.currentFolder + "/Adresa_Raspuns.docx");
+
+            JOptionPane.showMessageDialog(null, "Raportul de finalizare a lucrării a fost generat cu succes");
         } catch (NullPointerException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error: "+ e);

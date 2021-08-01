@@ -8,7 +8,7 @@ public class PanelDatePersoanaJuridica extends JPanel {
 
     public static JTextField tfDenumireSocietate, tfSediuSocietate, tfPLSocietate, tfEmitentCurs, tfDataCurs, tfEmitentAtestat, tfDataAtestat, tfNrSerieAtestat;
 
-    public static JLabel lblNumarLucrare, lblAdresaDomiciliu, lblAdresaResedinta, sexSolicitant;
+    public static JLabel lblNumarLucrare, lblAdresaDomiciliu, lblAdresaResedinta;
 
 
     public PanelDatePersoanaJuridica() {

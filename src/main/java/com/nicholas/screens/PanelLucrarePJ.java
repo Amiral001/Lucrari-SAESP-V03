@@ -2,7 +2,10 @@ package com.nicholas.screens;
 
 import com.nicholas.JFrameFactore;
 import com.nicholas.data.DataBase;
-import com.nicholas.entitys.*;
+import com.nicholas.entitys.Lucrare;
+import com.nicholas.entitys.LucrarePersoanaJuridica;
+import com.nicholas.entitys.PersoanaFizica;
+import com.nicholas.entitys.PersoanaJuridica;
 import com.nicholas.utils.Service;
 import com.nicholas.utils.WordDocService;
 
@@ -25,8 +28,8 @@ public class PanelLucrarePJ extends JPanel {
 		JPanel bigPanel = new JPanel();
 		bigPanel.setBounds(0, 10, 1200, 800);
 		
-		PanelDatePersoana panelDatePersoana = new PanelDatePersoana(); panelDatePersoana.setBounds(0, 0, 1200, 383);
-		panelDatePersoana.setLayout(null);
+		PanelDatePersoanaFizica panelDatePersoanaFizica = new PanelDatePersoanaFizica(); panelDatePersoanaFizica.setBounds(0, 0, 1200, 383);
+		panelDatePersoanaFizica.setLayout(null);
 		
 		
 		PanelDatePersoanaJuridica dateSocietatePanel = new PanelDatePersoanaJuridica();
@@ -34,7 +37,7 @@ public class PanelLucrarePJ extends JPanel {
 		bigPanel.setLayout(null);
 		
 		
-		bigPanel.add(panelDatePersoana);
+		bigPanel.add(panelDatePersoanaFizica);
 		bigPanel.add(dateSocietatePanel);
 		
 		JButton btnVerificari = new JButton("Genereaza documentatie verificari");
@@ -44,24 +47,26 @@ public class PanelLucrarePJ extends JPanel {
 				pj = new PersoanaJuridica();
 				lpj = new LucrarePersoanaJuridica();
 
-				if (!(PanelDatePersoana.tfNrLucrare.getText().equals("") || PanelDatePersoana.tfDataLucrare.getText().equals("") ||
-						PanelDatePersoana.tfNumeSolicitant.getText().equals("") || PanelDatePersoana.tfPrenumeSolicitant.getText().equals("")
-						|| PanelDatePersoana.tfCNPSolicitant.getText().equals(""))) {
+				if (!(PanelDatePersoanaFizica.tfNrLucrare.getText().equals("") || PanelDatePersoanaFizica.tfDataLucrare.getText().equals("") ||
+						PanelDatePersoanaFizica.tfNumeSolicitant.getText().equals("") || PanelDatePersoanaFizica.tfPrenumeSolicitant.getText().equals("")
+						|| PanelDatePersoanaFizica.tfCNPSolicitant.getText().equals(""))) {
 
-					pf.setNume(PanelDatePersoana.tfNumeSolicitant.getText()); pf.setPrenume(PanelDatePersoana.tfPrenumeSolicitant.getText());
-					pf.setCnp(PanelDatePersoana.tfCNPSolicitant.getText()); pf.setAdresaDomiciliu(PanelDatePersoana.tfDomiciliuSolicitant.getText());
-					pf.setUnitate01(PanelDatePersoana.tfUnitateDomiciliu.getText()); pf.setSubunitate01(PanelDatePersoana.tfSubunitateDomiciliu.getText());
-					pf.setAdresaResedinta(PanelDatePersoana.tfResedintaSolicintant.getText()); pf.setUnitate02(PanelDatePersoana.tfUnitateResedinta.getText());
-					pf.setSubunitate02(PanelDatePersoana.tfSubunitateresedinta.getText()); pf.setNumarTelefon(PanelDatePersoana.tfTelefonSolicitant.getText());
+					pf.setNume(PanelDatePersoanaFizica.tfNumeSolicitant.getText()); pf.setPrenume(PanelDatePersoanaFizica.tfPrenumeSolicitant.getText());
+					pf.setCnp(PanelDatePersoanaFizica.tfCNPSolicitant.getText()); pf.setAdresaDomiciliu(PanelDatePersoanaFizica.tfDomiciliuSolicitant.getText());
+					pf.setUnitate01(PanelDatePersoanaFizica.tfUnitateDomiciliu.getText()); pf.setSubunitate01(PanelDatePersoanaFizica.tfSubunitateDomiciliu.getText());
+					pf.setAdresaResedinta(PanelDatePersoanaFizica.tfResedintaSolicintant.getText()); pf.setUnitate02(PanelDatePersoanaFizica.tfUnitateResedinta.getText());
+					pf.setSubunitate02(PanelDatePersoanaFizica.tfSubunitateresedinta.getText()); pf.setNumarTelefon(PanelDatePersoanaFizica.tfTelefonSolicitant.getText());
 					pf.setEmitentAtestat(PanelDatePersoanaJuridica.tfEmitentAtestat.getText()); pf.setSerieNrAtestat(PanelDatePersoanaJuridica.tfNrSerieAtestat.getText());
 					pf.setDataAtestat(PanelDatePersoanaJuridica.tfDataAtestat.getText());pf.setEmitentCurs(PanelDatePersoanaJuridica.tfEmitentCurs.getText());
-					pf.setDataCurs(PanelDatePersoanaJuridica.tfEmitentCurs.getText());
+					pf.setDataCurs(PanelDatePersoanaJuridica.tfDataCurs.getText());
+					pf.setDomAltJud(PanelDatePersoanaFizica.chckbxDomAltJud.isSelected() ? "Da" : "Nu");
+					pf.setResAltJud(PanelDatePersoanaFizica.chckbxResAltJud.isSelected() ? "Da" : "Nu");
 
 					pj.setDenumire(PanelDatePersoanaJuridica.tfDenumireSocietate.getText());
 					pj.setSediu(PanelDatePersoanaJuridica.tfSediuSocietate.getText()); pj.setPunctDeLucru(PanelDatePersoanaJuridica.tfPLSocietate.getText());
 
 
-					lpj.setNrLucrare(PanelDatePersoana.tfNrLucrare.getText()); lpj.setDataLucrare(Service.stringToDate(PanelDatePersoana.tfDataLucrare.getText()));
+					lpj.setNrLucrare(PanelDatePersoanaFizica.tfNrLucrare.getText()); lpj.setDataLucrare(Service.stringToDate(PanelDatePersoanaFizica.tfDataLucrare.getText()));
 					lpj.setTipLucrare(PanelMainScreen.tipLucrare); lpj.setPf(pf); lpj.setPj(pj);
 
 
@@ -111,16 +116,21 @@ public class PanelLucrarePJ extends JPanel {
 					}
 					if (result != null) {
 						assert pfs != null;
-						PanelDatePersoana.tfNumeSolicitant.setText(pfs.getNume());
-						PanelDatePersoana.tfPrenumeSolicitant.setText(pfs.getPrenume());
-						PanelDatePersoana.tfCNPSolicitant.setText(pfs.getCnp());
-						PanelDatePersoana.tfDomiciliuSolicitant.setText(pfs.getAdresaDomiciliu());
-						PanelDatePersoana.tfUnitateDomiciliu.setText(pfs.getUnitate01());
-						PanelDatePersoana.tfSubunitateDomiciliu.setText(pfs.getSubunitate01());
-						PanelDatePersoana.tfResedintaSolicintant.setText(pfs.getAdresaResedinta());
-						PanelDatePersoana.tfUnitateResedinta.setText(pfs.getUnitate02());
-						PanelDatePersoana.tfSubunitateresedinta.setText(pfs.getSubunitate02());
-						PanelDatePersoana.tfTelefonSolicitant.setText(pfs.getNumarTelefon());
+						PanelDatePersoanaFizica.tfNumeSolicitant.setText(pfs.getNume());
+						PanelDatePersoanaFizica.tfPrenumeSolicitant.setText(pfs.getPrenume());
+						PanelDatePersoanaFizica.tfCNPSolicitant.setText(pfs.getCnp());
+						PanelDatePersoanaFizica.tfDomiciliuSolicitant.setText(pfs.getAdresaDomiciliu());
+						PanelDatePersoanaFizica.tfUnitateDomiciliu.setText(pfs.getUnitate01());
+						PanelDatePersoanaFizica.tfSubunitateDomiciliu.setText(pfs.getSubunitate01());
+						PanelDatePersoanaFizica.tfResedintaSolicintant.setText(pfs.getAdresaResedinta());
+						PanelDatePersoanaFizica.tfUnitateResedinta.setText(pfs.getUnitate02());
+						PanelDatePersoanaFizica.tfSubunitateresedinta.setText(pfs.getSubunitate02());
+						PanelDatePersoanaFizica.tfTelefonSolicitant.setText(pfs.getNumarTelefon());
+						if (pfs.getDomAltJud().equals("Da")) {
+							PanelDatePersoanaFizica.chckbxDomAltJud.setSelected(true);
+						} else if (pfs.getResAltJud().equals("Da")){
+							PanelDatePersoanaFizica.chckbxResAltJud.setSelected(true);
+						}
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Nu sunt inregistrate informatii in istoric!");
@@ -151,31 +161,41 @@ public class PanelLucrarePJ extends JPanel {
 					}
 					for (Lucrare lpj : DataBase.getLucrari()) {
 						if (result != null && result.equals(lpj.getNrLucrare())) {
-							lpjs = (LucrarePersoanaJuridica) lpj;
+							try {
+								lpjs = (LucrarePersoanaJuridica) lpj;
+							} catch (ClassCastException exception) {
+								exception.printStackTrace();
+								JOptionPane.showMessageDialog(null, "Eroare: Lucrarea selectată este din rândul celor pentru persoane fizice și nu juridice!");
+							}
 						}
 					}
 					if (result != null) {
 						assert lpj != null;
-						PanelDatePersoana.tfNrLucrare.setText(lpjs.getNrLucrare());
-						PanelDatePersoana.tfDataLucrare.setText(Service.dateToString(lpjs.getDataLucrare()));
-						PanelDatePersoana.tfNumeSolicitant.setText(lpjs.getPf().getNume());
-						PanelDatePersoana.tfPrenumeSolicitant.setText(lpjs.getPf().getPrenume());
-						PanelDatePersoana.tfCNPSolicitant.setText(lpjs.getPf().getCnp());
-						PanelDatePersoana.tfDomiciliuSolicitant.setText(lpjs.getPf().getAdresaDomiciliu());
-						PanelDatePersoana.tfUnitateDomiciliu.setText(lpjs.getPf().getUnitate01());
-						PanelDatePersoana.tfSubunitateDomiciliu.setText(lpjs.getPf().getSubunitate01());
-						PanelDatePersoana.tfResedintaSolicintant.setText(lpjs.getPf().getAdresaResedinta());
-						PanelDatePersoana.tfUnitateResedinta.setText(lpjs.getPf().getUnitate02());
-						PanelDatePersoana.tfSubunitateresedinta.setText(lpjs.getPf().getSubunitate02());
-						PanelDatePersoana.tfTelefonSolicitant.setText(lpjs.getPf().getNumarTelefon());
-						PanelDatePersoanaJuridica.tfEmitentAtestat.setText(lpjs.getPf().getEmitentAtestat());
-						PanelDatePersoanaJuridica.tfNrSerieAtestat.setText(lpjs.getPf().getSerieNrAtestat());
-						PanelDatePersoanaJuridica.tfDataAtestat.setText(lpjs.getPf().getDataAtestat());
-						PanelDatePersoanaJuridica.tfEmitentCurs.setText(lpjs.getPf().getEmitentCurs());
-						PanelDatePersoanaJuridica.tfDataCurs.setText(lpjs.getPf().getDataCurs());
-						PanelDatePersoanaJuridica.tfDenumireSocietate.setText(lpjs.getPj().getDenumire());
-						PanelDatePersoanaJuridica.tfSediuSocietate.setText(lpjs.getPj().getSediu());
-						PanelDatePersoanaJuridica.tfPLSocietate.setText(lpjs.getPj().getPunctDeLucru());
+							PanelDatePersoanaFizica.tfNrLucrare.setText(lpjs.getNrLucrare());
+							PanelDatePersoanaFizica.tfDataLucrare.setText(Service.dateToString(lpjs.getDataLucrare()));
+							PanelDatePersoanaFizica.tfNumeSolicitant.setText(lpjs.getPf().getNume());
+							PanelDatePersoanaFizica.tfPrenumeSolicitant.setText(lpjs.getPf().getPrenume());
+							PanelDatePersoanaFizica.tfCNPSolicitant.setText(lpjs.getPf().getCnp());
+							PanelDatePersoanaFizica.tfDomiciliuSolicitant.setText(lpjs.getPf().getAdresaDomiciliu());
+							PanelDatePersoanaFizica.tfUnitateDomiciliu.setText(lpjs.getPf().getUnitate01());
+							PanelDatePersoanaFizica.tfSubunitateDomiciliu.setText(lpjs.getPf().getSubunitate01());
+							PanelDatePersoanaFizica.tfResedintaSolicintant.setText(lpjs.getPf().getAdresaResedinta());
+							PanelDatePersoanaFizica.tfUnitateResedinta.setText(lpjs.getPf().getUnitate02());
+							PanelDatePersoanaFizica.tfSubunitateresedinta.setText(lpjs.getPf().getSubunitate02());
+							PanelDatePersoanaFizica.tfTelefonSolicitant.setText(lpjs.getPf().getNumarTelefon());
+							PanelDatePersoanaJuridica.tfEmitentAtestat.setText(lpjs.getPf().getEmitentAtestat());
+							PanelDatePersoanaJuridica.tfNrSerieAtestat.setText(lpjs.getPf().getSerieNrAtestat());
+							PanelDatePersoanaJuridica.tfDataAtestat.setText(lpjs.getPf().getDataAtestat());
+							PanelDatePersoanaJuridica.tfEmitentCurs.setText(lpjs.getPf().getEmitentCurs());
+							PanelDatePersoanaJuridica.tfDataCurs.setText(lpjs.getPf().getDataCurs());
+							PanelDatePersoanaJuridica.tfDenumireSocietate.setText(lpjs.getPj().getDenumire());
+							PanelDatePersoanaJuridica.tfSediuSocietate.setText(lpjs.getPj().getSediu());
+							PanelDatePersoanaJuridica.tfPLSocietate.setText(lpjs.getPj().getPunctDeLucru());
+						if (lpj.getPf().getDomAltJud().equals("Da")) {
+							PanelDatePersoanaFizica.chckbxDomAltJud.setSelected(true);
+						} else if (lpj.getPf().getResAltJud().equals("Da")){
+							PanelDatePersoanaFizica.chckbxResAltJud.setSelected(true);
+						}
 					}
 				} else {
 					JOptionPane.showMessageDialog(null, "Nu sunt inregistrate informatii in istoric!");

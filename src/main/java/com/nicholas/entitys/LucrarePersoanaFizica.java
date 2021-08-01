@@ -4,8 +4,7 @@ import java.time.LocalDate;
 
 public class LucrarePersoanaFizica extends Lucrare {
 
-    private String  letalaNeletala, lungaScurta, destinatieArma, regimCerere, domiciliulAltJudet,
-            resedintaAltJudet, armaLaDomiciliu, lucratorSAESP;
+    private String  letalaNeletala, lungaScurta, destinatieArma, regimCerere, armaLaDomiciliu, lucratorSAESP;
 
     private PersoanaFizica persoanaFizica;
 
@@ -18,8 +17,6 @@ public class LucrarePersoanaFizica extends Lucrare {
         this.lungaScurta = lungaScurta;
         this.destinatieArma = destinatieArma;
         this.regimCerere = regimCerere;
-        this.domiciliulAltJudet = domiciliulAltJudet;
-        this.resedintaAltJudet = resedintaAltJudet;
         this.armaLaDomiciliu = armaLaDomiciliu;
         this.lucratorSAESP = lucratorSAESP;
         this.persoanaFizica = persoanaFizica;
@@ -66,22 +63,6 @@ public class LucrarePersoanaFizica extends Lucrare {
         this.regimCerere = regimCerere;
     }
 
-    public String getDomiciliulAltJudet() {
-        return domiciliulAltJudet;
-    }
-
-    public void setDomiciliulAltJudet(String domiciliulAltJudet) {
-        this.domiciliulAltJudet = domiciliulAltJudet;
-    }
-
-    public String getResedintaAltJudet() {
-        return resedintaAltJudet;
-    }
-
-    public void setResedintaAltJudet(String resedintaAltJudet) {
-        this.resedintaAltJudet = resedintaAltJudet;
-    }
-
     public String getArmaLaDomiciliu() {
         return armaLaDomiciliu;
     }
@@ -105,8 +86,6 @@ public class LucrarePersoanaFizica extends Lucrare {
                 ", lungaScurta='" + lungaScurta + '\'' +
                 ", destinatieArma='" + destinatieArma + '\'' +
                 ", regimCerere='" + regimCerere + '\'' +
-                ", domiciliulAltJudet='" + domiciliulAltJudet + '\'' +
-                ", resedintaAltJudet='" + resedintaAltJudet + '\'' +
                 ", armaLaDomiciliu='" + armaLaDomiciliu + '\'' +
                 ", lucratorSAESP='" + lucratorSAESP + '\'' +
                 ", persoanaFizica=" + persoanaFizica +

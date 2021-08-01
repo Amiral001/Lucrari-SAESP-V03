@@ -2,14 +2,12 @@ package com.nicholas.entitys;
 
 public class PersoanaFizica {
 
-    private String nume, prenume, cnp, adresaDomiciliu, adresaResedinta, serieCI, nrCI, numarTelefon, unitate01, unitate02, subunitate01, subunitate02, emitentAtestat, serieNrAtestat, dataAtestat, emitentCurs, dataCurs;
+    private String nume, prenume, cnp, adresaDomiciliu, adresaResedinta, serieCI, nrCI, numarTelefon, unitate01, unitate02, subunitate01, subunitate02, emitentAtestat, serieNrAtestat, dataAtestat, emitentCurs, dataCurs, domAltJud, resAltJud;
 
     public PersoanaFizica() {
     }
 
-    public PersoanaFizica(String nume, String prenume, String cnp, String adresaDomiciliu, String adresaResedinta, String serieCI, String nrCI,
-						  String numarTelefon, String unitate01, String unitate02, String subunitate01, String subunitate02, String emitentAtestat,
-						  String serieNrAtestat, String dataAtestat, String emitentCurs, String dataCurs) {
+    public PersoanaFizica(String nume, String prenume, String cnp, String adresaDomiciliu, String adresaResedinta, String serieCI, String nrCI, String numarTelefon, String unitate01, String unitate02, String subunitate01, String subunitate02, String emitentAtestat, String serieNrAtestat, String dataAtestat, String emitentCurs, String dataCurs, String domAltJud, String resAltJud) {
         this.nume = nume;
         this.prenume = prenume;
         this.cnp = cnp;
@@ -27,6 +25,24 @@ public class PersoanaFizica {
         this.dataAtestat = dataAtestat;
         this.emitentCurs = emitentCurs;
         this.dataCurs = dataCurs;
+        this.domAltJud = domAltJud;
+        this.resAltJud = resAltJud;
+    }
+
+    public String getDomAltJud() {
+        return domAltJud;
+    }
+
+    public void setDomAltJud(String domAltJud) {
+        this.domAltJud = domAltJud;
+    }
+
+    public String getResAltJud() {
+        return resAltJud;
+    }
+
+    public void setResAltJud(String resAltJud) {
+        this.resAltJud = resAltJud;
     }
 
     public String getNume() {

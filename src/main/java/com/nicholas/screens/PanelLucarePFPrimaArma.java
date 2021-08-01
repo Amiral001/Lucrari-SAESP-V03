@@ -15,9 +15,9 @@ public class PanelLucarePFPrimaArma extends JPanel {
 		JPanel bigPanel = new JPanel();
 		bigPanel.setBounds(0, 10, 1200, 800);
 		
-		PanelDatePersoana panelDatePersoana = new PanelDatePersoana();
-		panelDatePersoana.setBounds(0, 11, 1200, 485);
-		panelDatePersoana.setLayout(null);
+		PanelDatePersoanaFizica panelDatePersoanaFizica = new PanelDatePersoanaFizica();
+		panelDatePersoanaFizica.setBounds(0, 11, 1200, 485);
+		panelDatePersoanaFizica.setLayout(null);
 		
 		
 		PanelDateCererePF panelDateCererePF = new PanelDateCererePF();
@@ -26,7 +26,7 @@ public class PanelLucarePFPrimaArma extends JPanel {
 		bigPanel.setLayout(null);
 		
 		
-		bigPanel.add(panelDatePersoana);
+		bigPanel.add(panelDatePersoanaFizica);
 		bigPanel.add(panelDateCererePF);
 		
 		add(bigPanel);

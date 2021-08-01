@@ -50,7 +50,7 @@ public class DataBase {
 				lucrari.add(lucrare);
 				JOptionPane.showMessageDialog(null, "Datele au fost salvate cu succes!");
 			} else {
-				JOptionPane.showMessageDialog(null, "Exista deja o lucrare cu acest numar in istoric");
+				JOptionPane.showMessageDialog(null, "Lucrarea nu a fost adaugata in baza de date. Exista deja o lucrare cu acest numar !");
 			}
 		}
 	}
