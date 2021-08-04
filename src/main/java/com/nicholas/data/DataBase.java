@@ -1,16 +1,21 @@
 package com.nicholas.data;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nicholas.entitys.Lucrare;
-import com.nicholas.entitys.LucrarePersoanaFizica;
 import com.nicholas.entitys.PersoanaFizica;
 import com.nicholas.entitys.PersoanaJuridica;
-import org.json.simple.JSONArray;
+import com.nicholas.utils.StringsValue;
 
 import javax.swing.*;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class DataBase {
+
+	private static FileWriter file1, file2, file3;
 
 	private static final ArrayList<PersoanaFizica> persoaneFizice = new ArrayList<>();
 	private static final ArrayList<PersoanaJuridica> persoaneJuridice = new ArrayList<>();
@@ -79,6 +84,52 @@ public class DataBase {
     }
 
 	public static void writeJson() {
+		GsonBuilder gsonBuilder = new GsonBuilder();
+		Gson gson = gsonBuilder.create();
+		String JSONObjectPersoaneFizice = gson.toJson(persoaneFizice);
+		String JSONObjectPersoaneJuridice = gson.toJson(persoaneJuridice);
+		String JSONObjectLucrari = gson.toJson(lucrari);
+		try {
+			file1 = new FileWriter(StringsValue.currentFolder + "/docx/persoaneFizice.txt");
+			file1.write(JSONObjectPersoaneFizice);
+			file1.close();
+
+			file2 = new FileWriter(StringsValue.currentFolder + "/docx/persoaneJuridice.txt");
+			file2.write(JSONObjectPersoaneJuridice);
+			file2.close();
+
+			file3 = new FileWriter(StringsValue.currentFolder + "/docx/lucrari.txt");
+			file3.write(JSONObjectLucrari);
+			file3.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void readJson() {
+		//logica care repopuleaza arraylist-urile
+
+
+//		GsonBuilder gsonBuilder = new GsonBuilder();
+//		Gson gson = gsonBuilder.create();
+//		String JSONObjectPersoaneFizice = gson.toJson(persoaneFizice);
+//		String JSONObjectPersoaneJuridice = gson.toJson(persoaneJuridice);
+//		String JSONObjectLucrari = gson.toJson(lucrari);
+//		try {
+//			file1 = new FileWriter(StringsValue.currentFolder + "/docx/persoaneFizice.txt");
+//persoaneFizice = file1.
+//			file1.close();
+//
+//			file2 = new FileWriter(StringsValue.currentFolder + "/docx/persoaneJuridice.txt");
+//
+//			file2.close();
+//
+//			file3 = new FileWriter(StringsValue.currentFolder + "/docx/lucrari.txt");
+//
+//			file3.close();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 
 	}
 }

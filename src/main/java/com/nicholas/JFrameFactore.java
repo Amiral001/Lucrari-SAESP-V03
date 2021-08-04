@@ -39,6 +39,7 @@ public class JFrameFactore extends JPanel {
 
 	private void initialize() {
 
+		DataBase.readJson();
 		frame = getFrame();
 		frame.setSize(1200, 900);
 //		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

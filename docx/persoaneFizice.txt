@@ -1,0 +1,1 @@
+[{"nume":"nume","prenume":"prenume","cnp":"242344r543343","adresaDomiciliu":"domiciliu","adresaResedinta":"","serieCI":"","nrCI":"","numarTelefon":"","unitate01":"u1","unitate02":"","subunitate01":"s1","subunitate02":"","domAltJud":"Nu","resAltJud":"Nu"}]
