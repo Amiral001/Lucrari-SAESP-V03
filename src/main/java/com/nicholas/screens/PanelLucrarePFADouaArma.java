@@ -49,5 +49,8 @@ public class PanelLucrarePFADouaArma extends JPanel {
 		bigPanel.add(panelDateCererePF);
 		
 		add(bigPanel);
+		bigPanel.repaint();
+		bigPanel.revalidate();
+		bigPanel.setVisible(true);
 	}
 }

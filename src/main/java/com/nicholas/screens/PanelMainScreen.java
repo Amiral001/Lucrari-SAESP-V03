@@ -27,7 +27,7 @@ public class PanelMainScreen extends JPanel {
 		JFrame frame = JFrameFactore.getFrame();
 
 		JPanel mainPanel = new JPanel();
-		mainPanel.setBounds(0, 0, 1150, 850);
+		mainPanel.setBounds(0, 0, 1200, 850);
 		frame.getContentPane().add(mainPanel);
 		mainPanel.setLayout(null);
 
@@ -57,8 +57,10 @@ public class PanelMainScreen extends JPanel {
 		JButton button_prima_arma = new JButton("Prima arma");
 		button_prima_arma.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+//				JOptionPane.showMessageDialog(null, System.getProperty("user.dir"));
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(new PanelLucarePFPrimaArma());
+				frame.setVisible(true);
 				tipLucrare = "PA";
 			}
 		});
@@ -77,6 +79,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "ADA";
 				frame.getContentPane().add(new PanelLucrarePFADouaArma());
+				frame.setVisible(true);
 			}
 		});
 		button_a_doua_arma.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -92,6 +95,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "V";
 				frame.getContentPane().add(new PanelLucrarePFViza());
+				frame.setVisible(true);
 			}
 		});
 		button_viza.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -107,6 +111,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "D";
 				frame.getContentPane().add(new PanelLucrarePFDomiciliu());
+				frame.setVisible(true);
 			}
 		});
 		button_domiciliu.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -122,6 +127,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "R";
 				frame.getContentPane().add(new PanelLucrarePFResedinta());
+				frame.setVisible(true);
 			}
 		});
 		button_resedinta.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -137,6 +143,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "A";
 				frame.getContentPane().add(new PanelUnderConstruction());
+				frame.setVisible(true);
 			}
 		});
 		button_autorizatie.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -164,6 +171,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "DOT";
 				frame.getContentPane().add(new PanelLucrarePJ());
+				frame.setVisible(true);
 			}
 		});
 		button_dotare.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -179,6 +187,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "GES";
 				frame.getContentPane().add(new PanelLucrarePJ());
+				frame.setVisible(true);
 			}
 		});
 		button_gestionar.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -194,6 +203,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "APJ";
 				frame.getContentPane().add(new PanelUnderConstruction());
+				frame.setVisible(true);
 			}
 		});
 		button_autorizatie2.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -210,6 +220,10 @@ public class PanelMainScreen extends JPanel {
 		lblByNicholas.setBounds(971, 28, 169, 43);
 		panelButtom.add(lblByNicholas);
 		lblByNicholas.setFont(new Font("Brush Script MT", Font.PLAIN, 34));
+
+		mainPanel.repaint();
+		mainPanel.revalidate();
+		mainPanel.setVisible(true);
 
 	}
 

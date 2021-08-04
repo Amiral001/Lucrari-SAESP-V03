@@ -223,6 +223,9 @@ public class PanelLucrarePJ extends JPanel {
 
 
 		add(bigPanel);
+		bigPanel.repaint();
+		bigPanel.revalidate();
+		bigPanel.setVisible(true);
 
 
 	}

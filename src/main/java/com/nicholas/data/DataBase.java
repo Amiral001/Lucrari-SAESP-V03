@@ -4,6 +4,7 @@ import com.nicholas.entitys.Lucrare;
 import com.nicholas.entitys.LucrarePersoanaFizica;
 import com.nicholas.entitys.PersoanaFizica;
 import com.nicholas.entitys.PersoanaJuridica;
+import org.json.simple.JSONArray;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -76,4 +77,8 @@ public class DataBase {
 		}
 		persoaneJuridice.add(pj);
     }
+
+	public static void writeJson() {
+
+	}
 }

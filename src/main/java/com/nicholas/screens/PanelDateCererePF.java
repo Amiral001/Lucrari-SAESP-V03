@@ -41,11 +41,10 @@ public class PanelDateCererePF extends JPanel {
         btnBack.setIcon(Service.changeIconSize(new ImageIcon(Service.getPath("iconBack.png")), 100, 100));
         btnBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JFrame jf = JFrameFactore.getFrame();
-                jf.getContentPane().removeAll();
-                jf.getContentPane().add(PanelMainScreen.getInstance());
-                jf.revalidate();
-                jf.repaint();
+                JFrame frame = JFrameFactore.getFrame();
+                frame.getContentPane().removeAll();
+                frame.getContentPane().add(PanelMainScreen.getInstance());
+                frame.setVisible(true);
             }
         });
         setLayout(null);

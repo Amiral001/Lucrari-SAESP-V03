@@ -1,9 +1,12 @@
 package com.nicholas;
 
+import com.nicholas.data.DataBase;
 import com.nicholas.screens.PanelMainScreen;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class JFrameFactore extends JPanel {
 
@@ -38,11 +41,18 @@ public class JFrameFactore extends JPanel {
 
 		frame = getFrame();
 		frame.setSize(1200, 900);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				DataBase.writeJson();
+			}
+		});
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 
 		frame.getContentPane().add(new PanelMainScreen());
 
 	}
+
 }

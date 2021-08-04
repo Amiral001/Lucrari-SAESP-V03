@@ -10,7 +10,8 @@ import java.time.format.DateTimeParseException;
 public class Service {
 
 	public static String getPath(String fileName) {
-		return Thread.currentThread().getStackTrace()[2].getClassName().getClass().getResource("/" + fileName).getPath();
+//		return Thread.currentThread().getStackTrace()[2].getClassName().getClass().getResourceAsStream("/" + fileName).;
+	return StringsValue.currentFolder+"/docx/"+fileName;
 	}
 
 	public static ImageIcon changeIconSize(ImageIcon icon, int h, int w) {
@@ -102,4 +103,6 @@ public class Service {
     public static String getLimitDate() {
 		return dateToString(LocalDate.now().plusDays(14));
     }
+
+
 }
