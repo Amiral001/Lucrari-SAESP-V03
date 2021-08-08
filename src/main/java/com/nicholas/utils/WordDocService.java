@@ -1,9 +1,6 @@
 package com.nicholas.utils;
 
-import com.nicholas.screens.PanelDateCererePF;
-import com.nicholas.screens.PanelDatePersoanaFizica;
-import com.nicholas.screens.PanelDatePersoanaJuridica;
-import com.nicholas.screens.PanelMainScreen;
+import com.nicholas.screens.*;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.xwpf.usermodel.*;
 import org.jetbrains.annotations.NotNull;
@@ -640,7 +637,7 @@ public class WordDocService {
         }
         newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
         newValues.add(PanelDatePersoanaJuridica.tfDenumireSocietate.getText());
-        if (!PanelDatePersoanaJuridica.tfPLSocietate.getText().equals("")){
+        if (PanelDatePersoanaJuridica.tfPLSocietate.getText().equals("")){
             newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText());
         } else {
             newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText()+" și punct de lucru în " + PanelDatePersoanaJuridica.tfPLSocietate.getText());
@@ -715,7 +712,7 @@ public class WordDocService {
             }
             newValues.add(PanelDatePersoanaFizica.tfDataLucrare.getText());
             newValues.add(PanelDatePersoanaJuridica.tfDenumireSocietate.getText());
-            if (!PanelDatePersoanaJuridica.tfPLSocietate.getText().equals("")){
+            if (PanelDatePersoanaJuridica.tfPLSocietate.getText().equals("")){
                 newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText());
             } else {
                 newValues.add(PanelDatePersoanaJuridica.tfSediuSocietate.getText()+" și punct de lucru în " + PanelDatePersoanaJuridica.tfPLSocietate.getText());
@@ -759,6 +756,96 @@ public class WordDocService {
         } catch (NullPointerException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "Error: "+ e);
+        }
+
+    }
+
+    public static void createDocumentsFinalizareLucrarePrelungireAutorizatie() {
+
+        ArrayList<String> toReplace = new ArrayList<>();
+        toReplace.add("numarlucrare");
+        toReplace.add("datacurenta");
+        toReplace.add("datalucrare");
+        toReplace.add("nume01");
+        toReplace.add("nume02");
+        toReplace.add("cnpsolicitant");
+        toReplace.add("adresadomiciliu");
+        toReplace.add("numarautorizatie");
+        toReplace.add("dataautorizatie");
+        toReplace.add("letalaneletala");
+        toReplace.add("destinatiearma");
+        toReplace.add("data2autorizatie");
+
+
+        ArrayList<String> newValues = new ArrayList<>();
+        try {
+            newValues.add(PanelPrelungireAutorizatiPF.tfNrLucrare.getText());
+            newValues.add(Service.currentDateValue());
+            newValues.add(PanelPrelungireAutorizatiPF.tfDataLucrare.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfNumeSolicitant.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfPrenumeSolicitant.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfCNPSolicitant.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfDomiciliuSolicitant.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfNrSerieAutorizatie.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfDataAutorizatie.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfLetalaNeletala.getText());
+            newValues.add(PanelPrelungireAutorizatiPF.tfDestinatieArma.getText());
+            newValues.add(Service.dateToString(Service.add90Days(Service.stringToDate(PanelPrelungireAutorizatiPF.tfDataAutorizatie.getText()))));
+
+            WordDocService.replace(Service.getPath("RaportFinalPrelungireA.docx"), StringsValue.currentFolder + "/Raport_Prelungire_Autorizatie.docx", toReplace, newValues);
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+    }
+
+    public static void createDocumentsFinalizareLucrareRadiereArma() {
+
+        ArrayList<String> toReplace = new ArrayList<>();
+        toReplace.add("numarlucrare");
+        toReplace.add("datacurenta");
+        toReplace.add("datalucrare");
+        toReplace.add("nume01");
+        toReplace.add("nume02");
+        toReplace.add("cnpsolicitant");
+        toReplace.add("adresadomiciliu");
+        toReplace.add("letalaneletala");
+        toReplace.add("destinatiearma");
+        toReplace.add("marcamodelarma");
+        toReplace.add("serieaarma");
+        toReplace.add("calibruarma");
+        toReplace.add("numeprenumecumparator");
+        toReplace.add("serienrfactura");
+        toReplace.add("datafactura");
+        toReplace.add("emitentfactura");
+
+
+
+        ArrayList<String> newValues = new ArrayList<>();
+        try {
+            newValues.add(PanelRadiereArmaPF.tfNrLucrare.getText());
+            newValues.add(Service.currentDateValue());
+            newValues.add(PanelRadiereArmaPF.tfDataLucrare.getText());
+            newValues.add(PanelRadiereArmaPF.tfNumeSolicitant.getText());
+            newValues.add(PanelRadiereArmaPF.tfPrenumeSolicitant.getText());
+            newValues.add(PanelRadiereArmaPF.tfCNPSolicitant.getText());
+            newValues.add(PanelRadiereArmaPF.tfDomiciliuSolicitant.getText());
+            newValues.add(PanelRadiereArmaPF.tfLetalaNeletala.getText());
+            newValues.add(PanelRadiereArmaPF.tfDestinatieArma.getText());
+            newValues.add(PanelRadiereArmaPF.tfMarcaModelArma.getText());
+            newValues.add(PanelRadiereArmaPF.tfSerieArma.getText());
+            newValues.add(PanelRadiereArmaPF.tfCalArma.getText());
+            newValues.add(PanelRadiereArmaPF.tfNumePrenumeCumparator.getText());
+            newValues.add(PanelRadiereArmaPF.tfSerieNrFact.getText());
+            newValues.add(PanelRadiereArmaPF.tfDataFact.getText());
+            newValues.add(PanelRadiereArmaPF.tfEmitentFact.getText());
+
+            WordDocService.replace(Service.getPath("RaportFinalRadiereArma.docx"), StringsValue.currentFolder + "/Raport_Radiere_Arma.docx", toReplace, newValues);
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error: " + e);
         }
 
     }

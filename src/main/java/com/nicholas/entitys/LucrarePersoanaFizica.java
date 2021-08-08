@@ -1,8 +1,9 @@
 package com.nicholas.entitys;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class LucrarePersoanaFizica extends Lucrare {
+public class LucrarePersoanaFizica extends Lucrare implements Serializable {
 
     private String  letalaNeletala, lungaScurta, destinatieArma, regimCerere, armaLaDomiciliu, lucratorSAESP;
 

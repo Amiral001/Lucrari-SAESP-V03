@@ -44,7 +44,7 @@ public class PanelDateCererePF extends JPanel {
                 JFrame frame = JFrameFactore.getFrame();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(PanelMainScreen.getInstance());
-                frame.setVisible(true);
+                Service.update (frame);
             }
         });
         setLayout(null);
@@ -77,15 +77,17 @@ public class PanelDateCererePF extends JPanel {
 
 
         String[] letalaNeletala = {"neletală", "letală"};
-        tfLetalaNeletala = new JLabel("neletală");
+        tfLetalaNeletala = new JLabel("neletale");
         letalaNeletalaComboBox = new FixedJComboBox(letalaNeletala);
         letalaNeletalaComboBox.setBounds(216, 13, 301, 33);
         letalaNeletalaComboBox.setFont(new Font("Times New Roman", Font.BOLD, 24));
         add(letalaNeletalaComboBox);
         letalaNeletalaComboBox.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                if (e.getSource() == letalaNeletalaComboBox) {
-                    tfLetalaNeletala.setText(Objects.requireNonNull(letalaNeletalaComboBox.getSelectedItem()).toString());
+                if (Objects.requireNonNull(letalaNeletalaComboBox.getSelectedItem()).toString().equals("neletală")) {
+                    tfLetalaNeletala.setText("neletale");
+                } else {
+                    tfLetalaNeletala.setText("letale");
                 }
             }
         });

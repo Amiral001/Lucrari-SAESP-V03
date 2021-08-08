@@ -1,8 +1,9 @@
 package com.nicholas.entitys;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Lucrare {
+public class Lucrare implements Serializable {
 	
 	private String nrLucrare, tipLucrare;
 	private LocalDate dataLucrare;
@@ -14,25 +15,20 @@ public class Lucrare {
 
 
 	public Lucrare(String nrLucrare, String tipLucrare, LocalDate dataLucrare) {
-		this.nrLucrare = nrLucrare;
-		this.tipLucrare = tipLucrare;
-		this.dataLucrare = dataLucrare;
+		this.nrLucrare = nrLucrare;this.tipLucrare = tipLucrare;this.dataLucrare = dataLucrare;
 	}
 
 	public String getNrLucrare() {
 		return nrLucrare;
 	}
 
-
 	public void setNrLucrare(String nrLucrare) {
 		this.nrLucrare = nrLucrare;
 	}
 
-
 	public LocalDate getDataLucrare() {
 		return dataLucrare;
 	}
-
 
 	public void setDataLucrare(LocalDate dataLucrare) {
 		this.dataLucrare = dataLucrare;

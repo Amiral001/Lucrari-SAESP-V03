@@ -1,6 +1,7 @@
 package com.nicholas.screens;
 
 import com.nicholas.JFrameFactore;
+import com.nicholas.utils.Service;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -42,7 +43,7 @@ public class PanelMainScreen extends JPanel {
 		// persoane fizice
 
 		Panel panelPersoaneFizice = new Panel();
-		panelPersoaneFizice.setSize(591, 623);
+		panelPersoaneFizice.setSize(591, 662);
 		panelPersoaneFizice.setLocation(0, 129);
 		mainPanel.add(panelPersoaneFizice);
 
@@ -60,8 +61,8 @@ public class PanelMainScreen extends JPanel {
 //				JOptionPane.showMessageDialog(null, System.getProperty("user.dir"));
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(new PanelLucarePFPrimaArma());
-				frame.setVisible(true);
 				tipLucrare = "PA";
+				Service.update (frame);
 			}
 		});
 		
@@ -79,7 +80,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "ADA";
 				frame.getContentPane().add(new PanelLucrarePFADouaArma());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_a_doua_arma.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -95,7 +96,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "V";
 				frame.getContentPane().add(new PanelLucrarePFViza());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_viza.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -111,7 +112,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "D";
 				frame.getContentPane().add(new PanelLucrarePFDomiciliu());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_domiciliu.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -127,7 +128,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "R";
 				frame.getContentPane().add(new PanelLucrarePFResedinta());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_resedinta.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -137,24 +138,40 @@ public class PanelMainScreen extends JPanel {
 
 		panelPersoaneFizice.add(Box.createRigidArea(new Dimension(300, 25)));
 
-		JButton button_autorizatie = new JButton("Autorizatie");
-		button_autorizatie.addActionListener(new ActionListener() {
+		JButton btnPrelungireAutorizatie = new JButton("Prelungire Autorizatie");
+		btnPrelungireAutorizatie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
-				tipLucrare = "A";
-				frame.getContentPane().add(new PanelUnderConstruction());
-				frame.setVisible(true);
+				tipLucrare = "PRA";
+				frame.getContentPane().add(new PanelPrelungireAutorizatiPF());
+				Service.update (frame);
 			}
 		});
-		button_autorizatie.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		button_autorizatie.setPreferredSize(new Dimension(400, 50));
-		button_autorizatie.setBorder(new LineBorder(Color.BLACK));
-		panelPersoaneFizice.add(button_autorizatie, BorderLayout.CENTER);
+		btnPrelungireAutorizatie.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		btnPrelungireAutorizatie.setPreferredSize(new Dimension(400, 50));
+		btnPrelungireAutorizatie.setBorder(new LineBorder(Color.BLACK));
+		panelPersoaneFizice.add(btnPrelungireAutorizatie, BorderLayout.CENTER);
+
+		panelPersoaneFizice.add(Box.createRigidArea(new Dimension(300, 25)));
+
+		JButton btnRadiereArma = new JButton("Radiere armă");
+		btnRadiereArma.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().removeAll();
+				tipLucrare = "RA";
+				frame.getContentPane().add(new PanelRadiereArmaPF());
+				Service.update (frame);
+			}
+		});
+		btnRadiereArma.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		btnRadiereArma.setPreferredSize(new Dimension(400, 50));
+		btnRadiereArma.setBorder(new LineBorder(Color.BLACK));
+		panelPersoaneFizice.add(btnRadiereArma, BorderLayout.CENTER);
 
 		// persoane juridice
 
 		Panel panelPersoaneJuridice = new Panel();
-		panelPersoaneJuridice.setBounds(597, 129, 553, 623);
+		panelPersoaneJuridice.setBounds(597, 129, 553, 662);
 		mainPanel.add(panelPersoaneJuridice);
 
 		Label jLabelPersoaneJuridice = new Label("Persoane juridice");
@@ -171,7 +188,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "DOT";
 				frame.getContentPane().add(new PanelLucrarePJ());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_dotare.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -187,7 +204,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "GES";
 				frame.getContentPane().add(new PanelLucrarePJ());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_gestionar.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -203,7 +220,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "APJ";
 				frame.getContentPane().add(new PanelUnderConstruction());
-				frame.setVisible(true);
+				Service.update (frame);
 			}
 		});
 		button_autorizatie2.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -212,12 +229,12 @@ public class PanelMainScreen extends JPanel {
 		panelPersoaneJuridice.add(button_autorizatie2, BorderLayout.CENTER);
 
 		Panel panelButtom = new Panel();
-		panelButtom.setBounds(0, 758, 1150, 82);
+		panelButtom.setBounds(0, 797, 1150, 43);
 		mainPanel.add(panelButtom);
 		panelButtom.setLayout(null);
 
 		JLabel lblByNicholas = new JLabel("@By Nicholas");
-		lblByNicholas.setBounds(971, 28, 169, 43);
+		lblByNicholas.setBounds(971, 0, 169, 43);
 		panelButtom.add(lblByNicholas);
 		lblByNicholas.setFont(new Font("Brush Script MT", Font.PLAIN, 34));
 

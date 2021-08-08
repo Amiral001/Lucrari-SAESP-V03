@@ -104,5 +104,13 @@ public class Service {
 		return dateToString(LocalDate.now().plusDays(14));
     }
 
+	public static void update(JFrame frame) {
+		frame.pack();
+		frame.setVisible(true);
+		frame.setSize(1200, 900);
+	}
 
+    public static LocalDate add90Days(LocalDate localDate) {
+		return localDate.plusDays(180);
+    }
 }

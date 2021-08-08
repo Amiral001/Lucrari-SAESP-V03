@@ -1,6 +1,8 @@
 package com.nicholas.entitys;
 
-public class LucrarePersoanaJuridica extends Lucrare {
+import java.io.Serializable;
+
+public class LucrarePersoanaJuridica extends Lucrare implements Serializable {
 
 	private PersoanaFizica pf;
 	private PersoanaJuridica pj;

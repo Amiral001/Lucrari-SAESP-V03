@@ -1,6 +1,8 @@
 package com.nicholas.entitys;
 
-public class PersoanaFizica {
+import java.io.Serializable;
+
+public class PersoanaFizica implements Serializable {
 
     private String nume, prenume, cnp, adresaDomiciliu, adresaResedinta, serieCI, nrCI, numarTelefon, unitate01, unitate02, subunitate01, subunitate02, emitentAtestat, serieNrAtestat, dataAtestat, emitentCurs, dataCurs, domAltJud, resAltJud;
 

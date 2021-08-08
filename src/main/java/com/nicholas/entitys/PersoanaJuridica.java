@@ -1,8 +1,9 @@
 package com.nicholas.entitys;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class PersoanaJuridica {
+public class PersoanaJuridica implements Serializable {
 	
 	private String denumire, sediu, punctDeLucru;
 
