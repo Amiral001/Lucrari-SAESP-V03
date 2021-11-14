@@ -29,6 +29,7 @@ public class PanelUnderConstruction extends JPanel {
 				JFrame jf = JFrameFactore.getFrame();
 				jf.getContentPane().removeAll();
 				jf.getContentPane().add(PanelMainScreen.getInstance());
+				jf.setTitle("Pagina principală");
 				jf.revalidate();
 				jf.repaint();
 			}

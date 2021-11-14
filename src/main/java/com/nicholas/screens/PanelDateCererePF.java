@@ -44,7 +44,8 @@ public class PanelDateCererePF extends JPanel {
                 JFrame frame = JFrameFactore.getFrame();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(PanelMainScreen.getInstance());
-                Service.update (frame);
+                frame.setTitle("Pagina principală");
+                Service.update(frame);
             }
         });
         setLayout(null);
@@ -250,7 +251,7 @@ public class PanelDateCererePF extends JPanel {
                     }
                     Object[] optionsArray = optionsArrayList.toArray();
                     try {
-                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza persoana", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
+                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza persoana", "", JOptionPane.QUESTION_MESSAGE, null, optionsArray, optionsArray[0]);
                         for (PersoanaFizica pf : DataBase.getPersoaneFizice()) {
                             if (result != null && result.equals(pf.getNume() + " " + pf.getPrenume())) {
                                 pfs = pf;
@@ -259,25 +260,29 @@ public class PanelDateCererePF extends JPanel {
                     } catch (ArrayIndexOutOfBoundsException | NullPointerException exeption) {
                         exeption.printStackTrace();
                     }
-                    if (result != null) {
-                        assert pfs != null;
-                        PanelDatePersoanaFizica.tfNumeSolicitant.setText(pfs.getNume());
-                        PanelDatePersoanaFizica.tfPrenumeSolicitant.setText(pfs.getPrenume());
-                        PanelDatePersoanaFizica.tfCNPSolicitant.setText(pfs.getCnp());
-                        PanelDatePersoanaFizica.tfDomiciliuSolicitant.setText(pfs.getAdresaDomiciliu());
-                        PanelDatePersoanaFizica.tfUnitateDomiciliu.setText(pfs.getUnitate01());
-                        PanelDatePersoanaFizica.tfSubunitateDomiciliu.setText(pfs.getSubunitate01());
-                        PanelDatePersoanaFizica.tfResedintaSolicintant.setText(pfs.getAdresaResedinta());
-                        PanelDatePersoanaFizica.tfUnitateResedinta.setText(pfs.getUnitate02());
-                        PanelDatePersoanaFizica.tfSubunitateresedinta.setText(pfs.getSubunitate02());
-                        PanelDatePersoanaFizica.tfTelefonSolicitant.setText(pfs.getNumarTelefon());
-                        PanelDatePersoanaFizica.tfSerieCI.setText(pfs.getSerieCI());
-                        PanelDatePersoanaFizica.tfNrCI.setText(pfs.getNrCI());
-                        if (pfs.getDomAltJud().equals("Da")) {
-                            PanelDatePersoanaFizica.chckbxDomAltJud.setSelected(true);
-                        } else if (pfs.getResAltJud().equals("Da")){
-                            PanelDatePersoanaFizica.chckbxResAltJud.setSelected(true);
+                    try {
+                        if (result != null) {
+                            assert pfs != null;
+                            PanelDatePersoanaFizica.tfNumeSolicitant.setText(pfs.getNume());
+                            PanelDatePersoanaFizica.tfPrenumeSolicitant.setText(pfs.getPrenume());
+                            PanelDatePersoanaFizica.tfCNPSolicitant.setText(pfs.getCnp());
+                            PanelDatePersoanaFizica.tfDomiciliuSolicitant.setText(pfs.getAdresaDomiciliu());
+                            PanelDatePersoanaFizica.tfUnitateDomiciliu.setText(pfs.getUnitate01());
+                            PanelDatePersoanaFizica.tfSubunitateDomiciliu.setText(pfs.getSubunitate01());
+                            PanelDatePersoanaFizica.tfResedintaSolicintant.setText(pfs.getAdresaResedinta());
+                            PanelDatePersoanaFizica.tfUnitateResedinta.setText(pfs.getUnitate02());
+                            PanelDatePersoanaFizica.tfSubunitateresedinta.setText(pfs.getSubunitate02());
+                            PanelDatePersoanaFizica.tfTelefonSolicitant.setText(pfs.getNumarTelefon());
+                            PanelDatePersoanaFizica.tfSerieCI.setText(pfs.getSerieCI());
+                            PanelDatePersoanaFizica.tfNrCI.setText(pfs.getNrCI());
+                            if (pfs.getDomAltJud().equals("Da")) {
+                                PanelDatePersoanaFizica.chckbxDomAltJud.setSelected(true);
+                            } else if (pfs.getResAltJud().equals("Da")) {
+                                PanelDatePersoanaFizica.chckbxResAltJud.setSelected(true);
+                            }
                         }
+                    } catch (NullPointerException exception) {
+                        exception.printStackTrace();
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Nu sunt inregistrate informatii in istoric!");
@@ -303,41 +308,48 @@ public class PanelDateCererePF extends JPanel {
                     }
                     Object[] optionsArray = optionsArrayList.toArray();
                     try {
-                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
+                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.QUESTION_MESSAGE, null, optionsArray, optionsArray[0]);
                     } catch (ArrayIndexOutOfBoundsException | NullPointerException exeption) {
                         exeption.printStackTrace();
                     }
                     for (Lucrare lpf : DataBase.getLucrari()) {
                         if (result != null && result.equals(lpf.getNrLucrare())) {
-                            try{
-                            lpfs = (LucrarePersoanaFizica) lpf;} catch (ClassCastException exception){
+                            try {
+                                lpfs = (LucrarePersoanaFizica) lpf;
+                            } catch (ClassCastException exception) {
                                 exception.printStackTrace();
                                 JOptionPane.showMessageDialog(null, "Eroare: Lucrarea selectată este din rândul celor pentru persoane juridice și nu fizice!");
                             }
                         }
                     }
-                    if (result != null) {
-                        assert lpfs != null;
-                        PanelDatePersoanaFizica.tfNrLucrare.setText(lpfs.getNrLucrare());
-                        PanelDatePersoanaFizica.tfDataLucrare.setText(Service.dateToString(lpfs.getDataLucrare()));
-                        PanelDatePersoanaFizica.tfLucratorSAESP.setText(lpfs.getLucratorSAESP());
-                        PanelDatePersoanaFizica.tfNumeSolicitant.setText(lpfs.getPersoanaFizica().getNume());
-                        PanelDatePersoanaFizica.tfPrenumeSolicitant.setText(lpfs.getPersoanaFizica().getPrenume());
-                        PanelDatePersoanaFizica.tfCNPSolicitant.setText(lpfs.getPersoanaFizica().getCnp());
-                        PanelDatePersoanaFizica.tfDomiciliuSolicitant.setText(lpfs.getPersoanaFizica().getAdresaDomiciliu());
-                        PanelDatePersoanaFizica.tfUnitateDomiciliu.setText(lpfs.getPersoanaFizica().getUnitate01());
-                        PanelDatePersoanaFizica.tfSubunitateDomiciliu.setText(lpfs.getPersoanaFizica().getSubunitate01());
-                        PanelDatePersoanaFizica.tfResedintaSolicintant.setText(lpfs.getPersoanaFizica().getAdresaResedinta());
-                        PanelDatePersoanaFizica.tfUnitateResedinta.setText(lpfs.getPersoanaFizica().getUnitate02());
-                        PanelDatePersoanaFizica.tfSubunitateresedinta.setText(lpfs.getPersoanaFizica().getSubunitate02());
-                        PanelDatePersoanaFizica.tfTelefonSolicitant.setText(lpfs.getPersoanaFizica().getNumarTelefon());
-                        PanelDatePersoanaFizica.tfSerieCI.setText(lpfs.getPersoanaFizica().getSerieCI());
-                        PanelDatePersoanaFizica.tfNrCI.setText(lpfs.getPersoanaFizica().getNrCI());
-                        if (lpfs.getPersoanaFizica().getDomAltJud().equals("Da")) {
-                            PanelDatePersoanaFizica.chckbxDomAltJud.setSelected(true);
-                        } else if (lpfs.getPersoanaFizica().getResAltJud().equals("Da")){
-                            PanelDatePersoanaFizica.chckbxResAltJud.setSelected(true);
+                    try {
+                        if (result != null) {
+                            assert lpfs != null;
+                            PanelDatePersoanaFizica.tfNrLucrare.setText(lpfs.getNrLucrare());
+                            PanelDatePersoanaFizica.tfDataLucrare.setText(Service.dateToString(lpfs.getDataLucrare()));
+                            PanelDatePersoanaFizica.tfLucratorSAESP.setText(lpfs.getLucratorSAESP());
+                            PanelDatePersoanaFizica.tfNumeSolicitant.setText(lpfs.getPersoanaFizica().getNume());
+                            PanelDatePersoanaFizica.tfPrenumeSolicitant.setText(lpfs.getPersoanaFizica().getPrenume());
+                            PanelDatePersoanaFizica.tfCNPSolicitant.setText(lpfs.getPersoanaFizica().getCnp());
+                            PanelDatePersoanaFizica.tfDomiciliuSolicitant.setText(lpfs.getPersoanaFizica().getAdresaDomiciliu());
+                            PanelDatePersoanaFizica.tfUnitateDomiciliu.setText(lpfs.getPersoanaFizica().getUnitate01());
+                            PanelDatePersoanaFizica.tfSubunitateDomiciliu.setText(lpfs.getPersoanaFizica().getSubunitate01());
+                            PanelDatePersoanaFizica.tfResedintaSolicintant.setText(lpfs.getPersoanaFizica().getAdresaResedinta());
+                            PanelDatePersoanaFizica.tfUnitateResedinta.setText(lpfs.getPersoanaFizica().getUnitate02());
+                            PanelDatePersoanaFizica.tfSubunitateresedinta.setText(lpfs.getPersoanaFizica().getSubunitate02());
+                            PanelDatePersoanaFizica.tfTelefonSolicitant.setText(lpfs.getPersoanaFizica().getNumarTelefon());
+                            PanelDatePersoanaFizica.tfSerieCI.setText(lpfs.getPersoanaFizica().getSerieCI());
+                            PanelDatePersoanaFizica.tfNrCI.setText(lpfs.getPersoanaFizica().getNrCI());
+                            if (lpfs.getPersoanaFizica().getDomAltJud().equals("Da")) {
+                                PanelDatePersoanaFizica.chckbxDomAltJud.setSelected(true);
+                            } else if (lpfs.getPersoanaFizica().getAdresaResedinta() != null) {
+                                if ((lpfs.getPersoanaFizica().getResAltJud().equals("Da"))) {
+                                    PanelDatePersoanaFizica.chckbxResAltJud.setSelected(true);
+                                }
+                            }
                         }
+                    } catch (NullPointerException exception) {
+                        exception.printStackTrace();
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Nu sunt inregistrate informatii in istoric!");

@@ -105,7 +105,7 @@ public class PanelLucrarePJ extends JPanel {
 					}
 					Object[] optionsArray = optionsArrayList.toArray();
 					try {
-						result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza persoana", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
+						result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza persoana", "", JOptionPane.QUESTION_MESSAGE, null, optionsArray, optionsArray[0]);
 						for (PersoanaFizica pf : DataBase.getPersoaneFizice()) {
 							if (result != null && result.equals(pf.getNume() + " " + pf.getPrenume())) {
 								pfs = pf;
@@ -155,7 +155,7 @@ public class PanelLucrarePJ extends JPanel {
 					}
 					Object[] optionsArray = optionsArrayList.toArray();
 					try {
-						result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
+						result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.QUESTION_MESSAGE, null, optionsArray, optionsArray[0]);
 					} catch (ArrayIndexOutOfBoundsException | NullPointerException exeption) {
 						exeption.printStackTrace();
 					}
@@ -215,6 +215,7 @@ public class PanelLucrarePJ extends JPanel {
 				JFrame jf = JFrameFactore.getFrame();
 				jf.getContentPane().removeAll();
 				jf.getContentPane().add(PanelMainScreen.getInstance());
+				jf.setTitle("Pagina principală");
 				jf.revalidate();
 				jf.repaint();
 			}

@@ -27,13 +27,13 @@ public class StringsValue {
 	public static ArrayList<String> sexStringsTargets = new ArrayList<>(Arrays.asList
 			("domnuldoamna", "domiciliatdomiciliata", "sunumituluisusnumitei", "susnumitulsusnumita", "sanctionatsanctionata", "solicitantuluisolicitantei",
 					"numituluinumitei", "solicitantulsolicitanta", "domnuluidoamnei", "numitulnumita", "judecatjudecata", "condamnatcondamnata", "invunuitinvinuita",
-					"inculpatinculpata", "stapanitstapanita", "implicatimplicata", "acestaaceasta", "aptapta", "Numitulnumita", "Acestaaceasta"));
+					"inculpatinculpata", "stapanitstapanita", "implicatimplicata", "acestaaceasta", "aptapta", "Numitulnumita", "Acestaaceasta", "Domnuldoamna"));
 	public static ArrayList<String> sexStringsReplacesM = new ArrayList<>(Arrays.asList
 			("domnul", "domiciliat", "sunumitului", "susnumitul", "sancționat", "solicitantului", "numitului", "solicitantul", "domnului", "numitul",
-					"judecat", "condamnat", "invinuit", "inculpat", "stăpânit", "implicat", "acesta", "apt", "Numitul", "Acesta"));
+					"judecat", "condamnat", "invinuit", "inculpat", "stăpânit", "implicat", "acesta", "apt", "Numitul", "Acesta", "Domnul"));
 	public static ArrayList<String> sexStringsReplacesF = new ArrayList<>(Arrays.asList
 			("doamna", "domiciliată", "susnumitei", "susnumita", "sancționată", "solicitantei", "numitei", "solicitanta", "doamnei", "numita",
-					"judecată", "condamnată", "invinuită", "inculpată", "stăpânită", "implicată", "aceasta", "aptă", "Numita", "Aceasta"));
+					"judecată", "condamnată", "invinuită", "inculpată", "stăpânită", "implicată", "aceasta", "aptă", "Numita", "Aceasta", "Doamna"));
 
 }
 

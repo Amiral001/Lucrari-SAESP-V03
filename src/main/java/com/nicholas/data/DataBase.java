@@ -34,6 +34,11 @@ public class DataBase {
 		persoaneFizice.add(persoanaFizica);
 	}
 
+	public static void addPersoanaJuridica(PersoanaJuridica pj) {
+		persoaneJuridice.removeIf(persoanaJuridica -> persoanaJuridica.getDenumire().equals(pj.getDenumire()));
+		persoaneJuridice.add(pj);
+	}
+
 	public static void addLucrare(Lucrare lucrare) {
 		if (lucrari.size() == 0) {
 			lucrari.add(lucrare);
@@ -43,7 +48,7 @@ public class DataBase {
 			for (Lucrare lucrareDeComparat : lucrari) {
 				if (lucrareDeComparat.getNrLucrare().equals(lucrare.getNrLucrare())) {
 					existaLucrare = true;
-				} 
+				}
 			}
 			if(!existaLucrare) {
 				lucrari.add(lucrare);
@@ -66,17 +71,12 @@ public class DataBase {
 		}
 	}
 
-    public static void addPersoanaJuridica(PersoanaJuridica pj) {
-		persoaneJuridice.removeIf(persoanaJuridica -> persoanaJuridica.getDenumire().equals(pj.getDenumire()));
-		persoaneJuridice.add(pj);
-    }
-
 	public static void writeJson() {
 		FileOutputStream fos1, fos2, fos3;
 		try {
-			fos1 = new FileOutputStream(StringsValue.currentFolder + "/docx/persoaneFizice.txt");
-			fos2 = new FileOutputStream(StringsValue.currentFolder + "/docx/persoaneJuridice.txt");
-			fos3 = new FileOutputStream(StringsValue.currentFolder + "/docx/Lucrari.txt");
+			fos1 = new FileOutputStream(StringsValue.currentFolder + "/docx/db/persoaneFizice.txt");
+			fos2 = new FileOutputStream(StringsValue.currentFolder + "/docx/db/persoaneJuridice.txt");
+			fos3 = new FileOutputStream(StringsValue.currentFolder + "/docx/db/Lucrari.txt");
 
 			ObjectOutputStream oos1 = new ObjectOutputStream(fos1);oos1.writeObject(persoaneFizice);oos1.close();
 			ObjectOutputStream oos2 = new ObjectOutputStream(fos2);oos2.writeObject(persoaneJuridice);oos2.close();
@@ -89,15 +89,15 @@ public class DataBase {
 
 	public static void readJson() {
 		try {
-			FileInputStream fis1 = new FileInputStream(StringsValue.currentFolder + "/docx/persoaneFizice.txt");
+			FileInputStream fis1 = new FileInputStream(StringsValue.currentFolder + "/docx/db/persoaneFizice.txt");
 			ObjectInputStream ois1 = new ObjectInputStream(fis1);persoaneFizice = (ArrayList<PersoanaFizica>) ois1.readObject();ois1.close();
 			Collections.sort(persoaneFizice, new PFComparator());
 
-			FileInputStream fis2 = new FileInputStream(StringsValue.currentFolder + "/docx/persoaneJuridice.txt");
+			FileInputStream fis2 = new FileInputStream(StringsValue.currentFolder + "/docx/db/persoaneJuridice.txt");
 			ObjectInputStream ois2 = new ObjectInputStream(fis2);persoaneJuridice = (ArrayList<PersoanaJuridica>) ois2.readObject();ois2.close();
 			Collections.sort(persoaneJuridice, new PJComparator());
 
-			FileInputStream fis3 = new FileInputStream(StringsValue.currentFolder + "/docx/Lucrari.txt");
+			FileInputStream fis3 = new FileInputStream(StringsValue.currentFolder + "/docx/db/Lucrari.txt");
 			ObjectInputStream ois3 = new ObjectInputStream(fis3);lucrari = (ArrayList<Lucrare>) ois3.readObject();ois3.close();
 			Collections.sort(lucrari, new LucrariComparator());
 

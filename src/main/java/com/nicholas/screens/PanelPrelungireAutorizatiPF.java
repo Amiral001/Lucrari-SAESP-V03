@@ -166,6 +166,7 @@ public class PanelPrelungireAutorizatiPF extends JPanel {
                 JFrame frame = JFrameFactore.getFrame();
                 frame.getContentPane().removeAll();
                 frame.getContentPane().add(PanelMainScreen.getInstance());
+                frame.setTitle("Pagina principală");
                 Service.update (frame);
             }
         });
@@ -238,7 +239,7 @@ public class PanelPrelungireAutorizatiPF extends JPanel {
                     }
                     Object[] optionsArray = optionsArrayList.toArray();
                     try {
-                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza persoana", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
+                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza persoana", "", JOptionPane.QUESTION_MESSAGE, null, optionsArray, optionsArray[0]);
                         for (PersoanaFizica pf : DataBase.getPersoaneFizice()) {
                             if (result != null && result.equals(pf.getNume() + " " + pf.getPrenume())) {
                                 pfs = pf;
@@ -286,7 +287,7 @@ public class PanelPrelungireAutorizatiPF extends JPanel {
                     }
                     Object[] optionsArray = optionsArrayList.toArray();
                     try {
-                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.PLAIN_MESSAGE, null, optionsArray, optionsArray[0]);
+                        result = (String) JOptionPane.showInputDialog(JFrameFactore.getFrame(), "Selecteaza lucrare", "", JOptionPane.QUESTION_MESSAGE, null, optionsArray, optionsArray[0]);
                     } catch (ArrayIndexOutOfBoundsException | NullPointerException exeption) {
                         exeption.printStackTrace();
                     }

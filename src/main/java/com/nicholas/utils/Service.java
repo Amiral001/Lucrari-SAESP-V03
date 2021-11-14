@@ -1,6 +1,10 @@
 package com.nicholas.utils;
 
 
+import com.nicholas.screens.PanelDatePersoanaFizica;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
@@ -110,7 +114,39 @@ public class Service {
 		frame.setSize(1200, 900);
 	}
 
-    public static LocalDate add90Days(LocalDate localDate) {
+	public static LocalDate add90Days(LocalDate localDate) {
 		return localDate.plusDays(180);
-    }
+	}
+
+	public static LocalDate add28Days(LocalDate localDate) {
+		return localDate.plusDays(28);
+	}
+
+
+	public static String capitalizeFirstLetter(String string) {
+		if (string.contains("-")) {
+			int x = string.indexOf("-");
+			return WordUtils.capitalizeFully(StringUtils.deleteWhitespace(string.substring(0, x))) + " "
+					+ WordUtils.capitalizeFully(StringUtils.deleteWhitespace(string.substring(x + 1)));
+		} else {
+			return WordUtils.capitalizeFully(string);
+		}
+	}
+
+	public static String getBirthday(String cnp) {
+		String day = cnp.substring(5, 7);
+		String mounth = cnp.substring(3, 5);
+		String year = null;
+		String yearFromCNP = cnp.substring(1, 3);
+		int yearNumber = Integer.parseInt(yearFromCNP);
+		if (yearNumber < 10 && yearNumber >= 0) {
+			year = "200" + yearNumber;
+		} else if (yearNumber < 20 && yearNumber >= 10) {
+			year = "20" + yearNumber;
+		} else {
+			year = "19" + yearNumber;
+		}
+		return day + "/" + mounth + "/" + year;
+	}
+
 }

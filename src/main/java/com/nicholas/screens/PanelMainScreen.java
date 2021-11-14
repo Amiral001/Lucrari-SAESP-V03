@@ -61,6 +61,7 @@ public class PanelMainScreen extends JPanel {
 //				JOptionPane.showMessageDialog(null, System.getProperty("user.dir"));
 				frame.getContentPane().removeAll();
 				frame.getContentPane().add(new PanelLucarePFPrimaArma());
+				frame.setTitle("Prima armă");
 				tipLucrare = "PA";
 				Service.update (frame);
 			}
@@ -80,6 +81,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "ADA";
 				frame.getContentPane().add(new PanelLucrarePFADouaArma());
+				frame.setTitle("A doua armă");
 				Service.update (frame);
 			}
 		});
@@ -96,6 +98,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "V";
 				frame.getContentPane().add(new PanelLucrarePFViza());
+				frame.setTitle("Prelungire valabilitate permis");
 				Service.update (frame);
 			}
 		});
@@ -112,6 +115,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "D";
 				frame.getContentPane().add(new PanelLucrarePFDomiciliu());
+				frame.setTitle("Schimbare domiciliu în permisul de armă");
 				Service.update (frame);
 			}
 		});
@@ -128,6 +132,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "R";
 				frame.getContentPane().add(new PanelLucrarePFResedinta());
+				frame.setTitle("Înscriere reședință în permisul de armă");
 				Service.update (frame);
 			}
 		});
@@ -144,6 +149,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "PRA";
 				frame.getContentPane().add(new PanelPrelungireAutorizatiPF());
+				frame.setTitle("Prelungire valabilitate autorizație");
 				Service.update (frame);
 			}
 		});
@@ -160,6 +166,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "RA";
 				frame.getContentPane().add(new PanelRadiereArmaPF());
+				frame.setTitle("Radiere armă");
 				Service.update (frame);
 			}
 		});
@@ -188,6 +195,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "DOT";
 				frame.getContentPane().add(new PanelLucrarePJ());
+				frame.setTitle("Avizare dotare cu armament");
 				Service.update (frame);
 			}
 		});
@@ -204,6 +212,7 @@ public class PanelMainScreen extends JPanel {
 				frame.getContentPane().removeAll();
 				tipLucrare = "GES";
 				frame.getContentPane().add(new PanelLucrarePJ());
+				frame.setTitle("Avizare gestionar");
 				Service.update (frame);
 			}
 		});

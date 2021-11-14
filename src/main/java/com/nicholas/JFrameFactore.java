@@ -49,6 +49,7 @@ public class JFrameFactore extends JPanel {
 				DataBase.writeJson();
 			}
 		});
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
 
